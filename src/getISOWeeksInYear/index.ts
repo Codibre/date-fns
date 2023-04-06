@@ -1,6 +1,6 @@
-import addWeeks from '../addWeeks/index'
-import { millisecondsInWeek } from '../constants/index'
-import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import addWeeks from '../addWeeks/index';
+import { millisecondsInWeek } from '../constants/index';
+import startOfISOWeekYear from '../startOfISOWeekYear/index';
 
 /**
  * @name getISOWeeksInYear
@@ -20,14 +20,12 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  * const result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-export default function getISOWeeksInYear<DateType extends Date>(
-  dirtyDate: DateType | number
-): number {
-  const thisYear = startOfISOWeekYear(dirtyDate)
-  const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
-  const diff = nextYear.valueOf() - thisYear.valueOf()
-  // Round the number of weeks to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / millisecondsInWeek)
+export default function getISOWeeksInYear(dirtyDate: Date | number): number {
+	const thisYear = startOfISOWeekYear(dirtyDate);
+	const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60));
+	const diff = nextYear.valueOf() - thisYear.valueOf();
+	// Round the number of weeks to the nearest integer
+	// because the number of milliseconds in a week is not constant
+	// (e.g. it's different in the week of the daylight saving time clock shift)
+	return Math.round(diff / millisecondsInWeek);
 }

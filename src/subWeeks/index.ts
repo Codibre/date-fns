@@ -1,4 +1,4 @@
-import addWeeks from '../addWeeks/index'
+import addWeeks from '../addWeeks/index';
 
 /**
  * @name subWeeks
@@ -17,9 +17,9 @@ import addWeeks from '../addWeeks/index'
  * const result = subWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Aug 04 2014 00:00:00
  */
-export default function subWeeks<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addWeeks(dirtyDate, -amount)
+export default function subWeeks(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addWeeks(dirtyDate, -amount);
 }

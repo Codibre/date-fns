@@ -1,5 +1,5 @@
-import getQuarter from '../getQuarter/index'
-import toDate from '../toDate/index'
+import getQuarter from '../getQuarter/index';
+import toDate from '../toDate/index';
 
 /**
  * @name differenceInCalendarQuarters
@@ -21,15 +21,15 @@ import toDate from '../toDate/index'
  * )
  * //=> 3
  */
-export default function differenceInCalendarQuarters<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function differenceInCalendarQuarters(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+	const dateLeft = toDate(dirtyDateLeft);
+	const dateRight = toDate(dirtyDateRight);
 
-  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  const quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+	const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear();
+	const quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight);
 
-  return yearDiff * 4 + quarterDiff
+	return yearDiff * 4 + quarterDiff;
 }

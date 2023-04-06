@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name setHours
@@ -17,11 +17,11 @@ import toDate from '../toDate/index'
  * const result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-export default function setHours<DateType extends Date>(
-  dirtyDate: DateType | number,
-  hours: number
-): DateType {
-  const date = toDate(dirtyDate)
-  date.setHours(hours)
-  return date
+export default function setHours(
+	dirtyDate: Date | number,
+	hours: number,
+): Date {
+	const date = toDate(dirtyDate);
+	date.setHours(hours);
+	return date;
 }

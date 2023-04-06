@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name endOfDecade
@@ -16,13 +16,11 @@ import toDate from '../toDate/index'
  * const result = endOfDecade(new Date(1984, 4, 12, 00, 00, 00))
  * //=> Dec 31 1989 23:59:59.999
  */
-export default function endOfDecade<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  const decade = 9 + Math.floor(year / 10) * 10
-  date.setFullYear(decade, 11, 31)
-  date.setHours(23, 59, 59, 999)
-  return date
+export default function endOfDecade(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	const year = date.getFullYear();
+	const decade = 9 + Math.floor(year / 10) * 10;
+	date.setFullYear(decade, 11, 31);
+	date.setHours(23, 59, 59, 999);
+	return date;
 }

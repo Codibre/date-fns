@@ -1,4 +1,4 @@
-import addISOWeekYears from '../addISOWeekYears/index'
+import addISOWeekYears from '../addISOWeekYears/index';
 
 /**
  * @name subISOWeekYears
@@ -19,9 +19,9 @@ import addISOWeekYears from '../addISOWeekYears/index'
  * const result = subISOWeekYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
  */
-export default function subISOWeekYears<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addISOWeekYears(dirtyDate, -amount)
+export default function subISOWeekYears(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addISOWeekYears(dirtyDate, -amount);
 }

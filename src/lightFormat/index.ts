@@ -1,6 +1,6 @@
-import isValid from '../isValid/index'
-import toDate from '../toDate/index'
-import formatters from '../_lib/format/lightFormatters/index'
+import isValid from '../isValid/index';
+import toDate from '../toDate/index';
+import formatters from '../_lib/format/lightFormatters/index';
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -11,11 +11,11 @@ import formatters from '../_lib/format/lightFormatters/index'
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-const formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g;
 
-const escapedStringRegExp = /^'([^]*?)'?$/
-const doubleQuoteRegExp = /''/g
-const unescapedLatinCharacterRegExp = /[a-zA-Z]/
+const escapedStringRegExp = /^'([^]*?)'?$/;
+const doubleQuoteRegExp = /''/g;
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/;
 
 /**
  * @name lightFormat
@@ -72,61 +72,61 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> '2014-02-11'
  */
 
-type Token = keyof typeof formatters
+type Token = keyof typeof formatters;
 
-export default function lightFormat<DateType extends Date>(
-  dirtyDate: DateType | number,
-  formatStr: string
+export default function lightFormat(
+	dirtyDate: Date | number,
+	formatStr: string,
 ): string {
-  const originalDate = toDate(dirtyDate)
+	const originalDate = toDate(dirtyDate);
 
-  if (!isValid(originalDate)) {
-    throw new RangeError('Invalid time value')
-  }
+	if (!isValid(originalDate)) {
+		throw new RangeError('Invalid time value');
+	}
 
-  const tokens = formatStr.match(formattingTokensRegExp)
+	const tokens = formatStr.match(formattingTokensRegExp);
 
-  // The only case when formattingTokensRegExp doesn't match the string is when it's empty
-  if (!tokens) return ''
+	// The only case when formattingTokensRegExp doesn't match the string is when it's empty
+	if (!tokens) return '';
 
-  const result = tokens
-    .map((substring) => {
-      // Replace two single quote characters with one single quote character
-      if (substring === "''") {
-        return "'"
-      }
+	const result = tokens
+		.map((substring) => {
+			// Replace two single quote characters with one single quote character
+			if (substring === "''") {
+				return "'";
+			}
 
-      const firstCharacter = substring[0]
-      if (firstCharacter === "'") {
-        return cleanEscapedString(substring)
-      }
+			const firstCharacter = substring[0];
+			if (firstCharacter === "'") {
+				return cleanEscapedString(substring);
+			}
 
-      const formatter = formatters[firstCharacter as Token]
-      if (formatter) {
-        return formatter(originalDate, substring)
-      }
+			const formatter = formatters[firstCharacter as Token];
+			if (formatter) {
+				return formatter(originalDate, substring);
+			}
 
-      if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
-        throw new RangeError(
-          'Format string contains an unescaped latin alphabet character `' +
-            firstCharacter +
-            '`'
-        )
-      }
+			if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+				throw new RangeError(
+					'Format string contains an unescaped latin alphabet character `' +
+						firstCharacter +
+						'`',
+				);
+			}
 
-      return substring
-    })
-    .join('')
+			return substring;
+		})
+		.join('');
 
-  return result
+	return result;
 }
 
 function cleanEscapedString(input: string) {
-  const matches = input.match(escapedStringRegExp)
+	const matches = input.match(escapedStringRegExp);
 
-  if (!matches) {
-    return input
-  }
+	if (!matches) {
+		return input;
+	}
 
-  return matches[1].replace(doubleQuoteRegExp, "'")
+	return matches[1].replace(doubleQuoteRegExp, "'");
 }

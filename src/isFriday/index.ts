@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name isFriday
@@ -16,8 +16,6 @@ import toDate from '../toDate/index'
  * const result = isFriday(new Date(2014, 8, 26))
  * //=> true
  */
-export default function isFriday<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return toDate(dirtyDate).getDay() === 5
+export default function isFriday(dirtyDate: Date | number): boolean {
+	return toDate(dirtyDate).getDay() === 5;
 }

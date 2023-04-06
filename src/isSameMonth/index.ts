@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name isSameMonth
@@ -22,14 +22,14 @@ import toDate from '../toDate/index'
  * const result = isSameMonth(new Date(2014, 8, 2), new Date(2015, 8, 25))
  * //=> false
  */
-export default function isSameMonth<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function isSameMonth(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): boolean {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-  return (
-    dateLeft.getFullYear() === dateRight.getFullYear() &&
-    dateLeft.getMonth() === dateRight.getMonth()
-  )
+	const dateLeft = toDate(dirtyDateLeft);
+	const dateRight = toDate(dirtyDateRight);
+	return (
+		dateLeft.getFullYear() === dateRight.getFullYear() &&
+		dateLeft.getMonth() === dateRight.getMonth()
+	);
 }

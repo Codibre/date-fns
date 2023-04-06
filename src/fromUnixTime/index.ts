@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name fromUnixTime
@@ -17,5 +17,5 @@ import toDate from '../toDate/index'
  * //=> Wed Feb 29 2012 11:45:05
  */
 export default function fromUnixTime(unixTime: number): Date {
-  return toDate(unixTime * 1000)
+	return toDate(unixTime * 1000);
 }

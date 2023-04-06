@@ -1,6 +1,6 @@
-import toDate from '../toDate/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import toDate from '../toDate/index';
+import type { LocaleOptions, WeekStartOptions } from '../types';
+import { getDefaultOptions } from '../_lib/defaultOptions/index';
 
 /**
  * The {@link endOfWeek} function options.
@@ -30,23 +30,23 @@ export interface EndOfWeekOptions extends WeekStartOptions, LocaleOptions {}
  * const result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-export default function endOfWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: EndOfWeekOptions
-): DateType {
-  const defaultOptions = getDefaultOptions()
-  const weekStartsOn =
-    options?.weekStartsOn ??
-    options?.locale?.options?.weekStartsOn ??
-    defaultOptions.weekStartsOn ??
-    defaultOptions.locale?.options?.weekStartsOn ??
-    0
+export default function endOfWeek(
+	dirtyDate: Date | number,
+	options?: EndOfWeekOptions,
+): Date {
+	const defaultOptions = getDefaultOptions();
+	const weekStartsOn =
+		options?.weekStartsOn ??
+		options?.locale?.options?.weekStartsOn ??
+		defaultOptions.weekStartsOn ??
+		defaultOptions.locale?.options?.weekStartsOn ??
+		0;
 
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
-  const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+	const date = toDate(dirtyDate);
+	const day = date.getDay();
+	const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
 
-  date.setDate(date.getDate() + diff)
-  date.setHours(23, 59, 59, 999)
-  return date
+	date.setDate(date.getDate() + diff);
+	date.setHours(23, 59, 59, 999);
+	return date;
 }

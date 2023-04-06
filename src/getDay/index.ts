@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name getDay
@@ -16,10 +16,8 @@ import toDate from '../toDate/index'
  * const result = getDay(new Date(2012, 1, 29))
  * //=> 3
  */
-export default function getDay<DateType extends Date>(
-  dirtyDate: DateType | number
-): number {
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
-  return day
+export default function getDay(dirtyDate: Date | number): number {
+	const date = toDate(dirtyDate);
+	const day = date.getDay();
+	return day;
 }

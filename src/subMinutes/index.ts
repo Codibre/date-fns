@@ -1,4 +1,4 @@
-import addMinutes from '../addMinutes/index'
+import addMinutes from '../addMinutes/index';
 
 /**
  * @name subMinutes
@@ -17,9 +17,9 @@ import addMinutes from '../addMinutes/index'
  * const result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-export default function subMinutes<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addMinutes(dirtyDate, -amount)
+export default function subMinutes(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addMinutes(dirtyDate, -amount);
 }

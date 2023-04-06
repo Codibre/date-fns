@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name isFuture
@@ -20,8 +20,6 @@ import toDate from '../toDate/index'
  * const result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-export default function isFuture<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return toDate(dirtyDate).getTime() > Date.now()
+export default function isFuture(dirtyDate: Date | number): boolean {
+	return toDate(dirtyDate).getTime() > Date.now();
 }

@@ -1,5 +1,5 @@
-import addDays from '../addDays/index'
-import isSameDay from '../isSameDay/index'
+import addDays from '../addDays/index';
+import isSameDay from '../isSameDay/index';
 
 /**
  * @name isTomorrow
@@ -21,8 +21,6 @@ import isSameDay from '../isSameDay/index'
  * const result = isTomorrow(new Date(2014, 9, 7, 14, 0))
  * //=> true
  */
-export default function isTomorrow<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameDay(dirtyDate, addDays(Date.now(), 1))
+export default function isTomorrow(dirtyDate: Date | number): boolean {
+	return isSameDay(dirtyDate, addDays(Date.now(), 1));
 }

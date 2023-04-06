@@ -1,4 +1,4 @@
-import { millisecondsInMinute } from '../constants/index'
+import { millisecondsInMinute } from '../constants/index';
 
 /**
  * @name minutesToMilliseconds
@@ -18,5 +18,5 @@ import { millisecondsInMinute } from '../constants/index'
  * //=> 120000
  */
 export default function minutesToMilliseconds(minutes: number): number {
-  return Math.floor(minutes * millisecondsInMinute)
+	return Math.floor(minutes * millisecondsInMinute);
 }

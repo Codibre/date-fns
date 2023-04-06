@@ -1,6 +1,6 @@
-import { millisecondsInDay } from '../constants/index'
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import { millisecondsInDay } from '../constants/index';
+import toDate from '../toDate/index';
+import type { Interval } from '../types';
 
 /**
  * @name getOverlappingDaysInIntervals
@@ -33,33 +33,34 @@ import type { Interval } from '../types'
  * //=> 0
  */
 
-export default function getOverlappingDaysInIntervals<DateType extends Date>(
-  intervalLeft: Interval<DateType>,
-  intervalRight: Interval<DateType>
+export default function getOverlappingDaysInIntervals(
+	intervalLeft: Interval,
+	intervalRight: Interval,
 ): number {
-  const leftStartTime = toDate(intervalLeft.start).getTime()
-  const leftEndTime = toDate(intervalLeft.end).getTime()
-  const rightStartTime = toDate(intervalRight.start).getTime()
-  const rightEndTime = toDate(intervalRight.end).getTime()
+	const leftStartTime = toDate(intervalLeft.start).getTime();
+	const leftEndTime = toDate(intervalLeft.end).getTime();
+	const rightStartTime = toDate(intervalRight.start).getTime();
+	const rightEndTime = toDate(intervalRight.end).getTime();
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
-    throw new RangeError('Invalid interval')
-  }
+	// Throw an exception if start date is after end date or if any date is `Invalid Date`
+	if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
+		throw new RangeError('Invalid interval');
+	}
 
-  const isOverlapping =
-    leftStartTime < rightEndTime && rightStartTime < leftEndTime
+	const isOverlapping =
+		leftStartTime < rightEndTime && rightStartTime < leftEndTime;
 
-  if (!isOverlapping) {
-    return 0
-  }
+	if (!isOverlapping) {
+		return 0;
+	}
 
-  const overlapStartDate =
-    rightStartTime < leftStartTime ? leftStartTime : rightStartTime
+	const overlapStartDate =
+		rightStartTime < leftStartTime ? leftStartTime : rightStartTime;
 
-  const overlapEndDate = rightEndTime > leftEndTime ? leftEndTime : rightEndTime
+	const overlapEndDate =
+		rightEndTime > leftEndTime ? leftEndTime : rightEndTime;
 
-  const differenceInMs = overlapEndDate - overlapStartDate
+	const differenceInMs = overlapEndDate - overlapStartDate;
 
-  return Math.ceil(differenceInMs / millisecondsInDay)
+	return Math.ceil(differenceInMs / millisecondsInDay);
 }

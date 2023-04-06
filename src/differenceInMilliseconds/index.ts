@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name differenceInMilliseconds
@@ -21,9 +21,9 @@ import toDate from '../toDate/index'
  * )
  * //=> 1100
  */
-export default function differenceInMilliseconds<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number
+export default function differenceInMilliseconds(
+	dateLeft: Date | number,
+	dateRight: Date | number,
 ): number {
-  return toDate(dateLeft).getTime() - toDate(dateRight).getTime()
+	return toDate(dateLeft).getTime() - toDate(dateRight).getTime();
 }

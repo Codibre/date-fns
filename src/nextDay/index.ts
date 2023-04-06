@@ -1,6 +1,6 @@
-import addDays from '../addDays'
-import getDay from '../getDay'
-import type { Day } from '../types'
+import addDays from '../addDays';
+import getDay from '../getDay';
+import type { Day } from '../types';
 
 /**
  * @name nextDay
@@ -24,12 +24,9 @@ import type { Day } from '../types'
  * const result = nextDay(new Date(2020, 2, 21), 2)
  * //=> Tue Mar 24 2020 00:00:00
  */
-export default function nextDay<DateType extends Date>(
-  date: DateType | number,
-  day: Day
-): DateType {
-  let delta = day - getDay(date)
-  if (delta <= 0) delta += 7
+export default function nextDay(date: Date | number, day: Day): Date {
+	let delta = day - getDay(date);
+	if (delta <= 0) delta += 7;
 
-  return addDays(date, delta)
+	return addDays(date, delta);
 }

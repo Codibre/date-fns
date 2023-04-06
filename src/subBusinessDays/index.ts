@@ -1,4 +1,4 @@
-import addBusinessDays from '../addBusinessDays/index'
+import addBusinessDays from '../addBusinessDays/index';
 
 /**
  * @name subBusinessDays
@@ -17,9 +17,9 @@ import addBusinessDays from '../addBusinessDays/index'
  * const result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
-export default function subBusinessDays<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addBusinessDays(dirtyDate, -amount)
+export default function subBusinessDays(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addBusinessDays(dirtyDate, -amount);
 }

@@ -1,4 +1,4 @@
-import startOfSecond from '../startOfSecond/index'
+import startOfSecond from '../startOfSecond/index';
 
 /**
  * @name isSameSecond
@@ -36,12 +36,12 @@ import startOfSecond from '../startOfSecond/index'
  * )
  * //=> false
  */
-export default function isSameSecond<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function isSameSecond(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): boolean {
-  const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  const dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+	const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft);
+	const dateRightStartOfSecond = startOfSecond(dirtyDateRight);
 
-  return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
+	return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime();
 }

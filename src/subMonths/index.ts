@@ -1,4 +1,4 @@
-import addMonths from '../addMonths/index'
+import addMonths from '../addMonths/index';
 
 /**
  * @name subMonths
@@ -17,9 +17,9 @@ import addMonths from '../addMonths/index'
  * const result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function subMonths<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addMonths(dirtyDate, -amount)
+export default function subMonths(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addMonths(dirtyDate, -amount);
 }

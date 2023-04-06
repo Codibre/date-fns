@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import toDate from '../toDate/index';
+import type { Interval } from '../types';
 
 /**
  * @name eachYearOfInterval
@@ -27,29 +27,27 @@ import type { Interval } from '../types'
  * //   Sun Jan 01 2017 00:00:00
  * // ]
  */
-export default function eachYearOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
-): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export default function eachYearOfInterval(interval: Interval): Date[] {
+	const startDate = toDate(interval.start);
+	const endDate = toDate(interval.end);
 
-  const endTime = endDate.getTime()
+	const endTime = endDate.getTime();
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
+	// Throw an exception if start date is after end date or if any date is `Invalid Date`
+	if (!(startDate.getTime() <= endTime)) {
+		throw new RangeError('Invalid interval');
+	}
 
-  const dates = []
+	const dates = [];
 
-  const currentDate = startDate
-  currentDate.setHours(0, 0, 0, 0)
-  currentDate.setMonth(0, 1)
+	const currentDate = startDate;
+	currentDate.setHours(0, 0, 0, 0);
+	currentDate.setMonth(0, 1);
 
-  while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate.setFullYear(currentDate.getFullYear() + 1)
-  }
+	while (currentDate.getTime() <= endTime) {
+		dates.push(toDate(currentDate));
+		currentDate.setFullYear(currentDate.getFullYear() + 1);
+	}
 
-  return dates
+	return dates;
 }

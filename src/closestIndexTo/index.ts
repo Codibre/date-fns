@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name closestIndexTo
@@ -23,33 +23,33 @@ import toDate from '../toDate/index'
  * const result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo<DateType extends Date>(
-  dirtyDateToCompare: DateType | number,
-  datesArray: Array<DateType | number>
+export default function closestIndexTo(
+	dirtyDateToCompare: Date | number,
+	datesArray: Array<Date | number>,
 ): number | undefined {
-  const dateToCompare = toDate(dirtyDateToCompare)
+	const dateToCompare = toDate(dirtyDateToCompare);
 
-  if (isNaN(Number(dateToCompare))) return NaN
+	if (isNaN(Number(dateToCompare))) return NaN;
 
-  const timeToCompare = dateToCompare.getTime()
+	const timeToCompare = dateToCompare.getTime();
 
-  let result: number | undefined
-  let minDistance: number
-  datesArray.forEach(function (dirtyDate, index) {
-    const currentDate = toDate(dirtyDate)
+	let result: number | undefined;
+	let minDistance: number;
+	datesArray.forEach(function (dirtyDate, index) {
+		const currentDate = toDate(dirtyDate);
 
-    if (isNaN(Number(currentDate))) {
-      result = NaN
-      minDistance = NaN
-      return
-    }
+		if (isNaN(Number(currentDate))) {
+			result = NaN;
+			minDistance = NaN;
+			return;
+		}
 
-    const distance = Math.abs(timeToCompare - currentDate.getTime())
-    if (result == null || distance < minDistance) {
-      result = index
-      minDistance = distance
-    }
-  })
+		const distance = Math.abs(timeToCompare - currentDate.getTime());
+		if (result == null || distance < minDistance) {
+			result = index;
+			minDistance = distance;
+		}
+	});
 
-  return result
+	return result;
 }

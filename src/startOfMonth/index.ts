@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name startOfMonth
@@ -17,11 +17,9 @@ import toDate from '../toDate/index'
  * const result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  date.setDate(1)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function startOfMonth(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	date.setDate(1);
+	date.setHours(0, 0, 0, 0);
+	return date;
 }

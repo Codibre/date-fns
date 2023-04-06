@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name startOfMinute
@@ -17,10 +17,8 @@ import toDate from '../toDate/index'
  * const result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:00
  */
-export default function startOfMinute<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  date.setSeconds(0, 0)
-  return date
+export default function startOfMinute(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	date.setSeconds(0, 0);
+	return date;
 }

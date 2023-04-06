@@ -1,5 +1,5 @@
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import toDate from '../toDate/index';
+import type { Interval, StepOptions } from '../types';
 
 /**
  * The {@link eachDayOfInterval} function options.
@@ -35,34 +35,34 @@ export interface EachDayOfIntervalOptions extends StepOptions {}
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
-  options?: EachDayOfIntervalOptions
-): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export default function eachDayOfInterval(
+	interval: Interval,
+	options?: EachDayOfIntervalOptions,
+): Date[] {
+	const startDate = toDate(interval.start);
+	const endDate = toDate(interval.end);
 
-  const endTime = endDate.getTime()
+	const endTime = endDate.getTime();
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
+	// Throw an exception if start date is after end date or if any date is `Invalid Date`
+	if (!(startDate.getTime() <= endTime)) {
+		throw new RangeError('Invalid interval');
+	}
 
-  const dates = []
+	const dates = [];
 
-  const currentDate = startDate
-  currentDate.setHours(0, 0, 0, 0)
+	const currentDate = startDate;
+	currentDate.setHours(0, 0, 0, 0);
 
-  const step = options?.step ?? 1
-  if (step < 1 || isNaN(step))
-    throw new RangeError('`options.step` must be a number greater than 1')
+	const step = options?.step ?? 1;
+	if (step < 1 || isNaN(step))
+		{throw new RangeError('`options.step` must be a number greater than 1');}
 
-  while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate.setDate(currentDate.getDate() + step)
-    currentDate.setHours(0, 0, 0, 0)
-  }
+	while (currentDate.getTime() <= endTime) {
+		dates.push(toDate(currentDate));
+		currentDate.setDate(currentDate.getDate() + step);
+		currentDate.setHours(0, 0, 0, 0);
+	}
 
-  return dates
+	return dates;
 }

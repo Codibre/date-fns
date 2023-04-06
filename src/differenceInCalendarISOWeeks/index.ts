@@ -1,6 +1,6 @@
-import { millisecondsInWeek } from '../constants/index'
-import startOfISOWeek from '../startOfISOWeek/index'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import { millisecondsInWeek } from '../constants/index';
+import startOfISOWeek from '../startOfISOWeek/index';
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index';
 
 /**
  * @name differenceInCalendarISOWeeks
@@ -24,22 +24,22 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * )
  * //=> 3
  */
-export default function differenceInCalendarISOWeeks<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function differenceInCalendarISOWeeks(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): number {
-  const startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
-  const startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
+	const startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft);
+	const startOfISOWeekRight = startOfISOWeek(dirtyDateRight);
 
-  const timestampLeft =
-    startOfISOWeekLeft.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfISOWeekLeft)
-  const timestampRight =
-    startOfISOWeekRight.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfISOWeekRight)
+	const timestampLeft =
+		startOfISOWeekLeft.getTime() -
+		getTimezoneOffsetInMilliseconds(startOfISOWeekLeft);
+	const timestampRight =
+		startOfISOWeekRight.getTime() -
+		getTimezoneOffsetInMilliseconds(startOfISOWeekRight);
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek)
+	// Round the number of days to the nearest integer
+	// because the number of milliseconds in a week is not constant
+	// (e.g. it's different in the week of the daylight saving time clock shift)
+	return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
 }

@@ -1,4 +1,4 @@
-import lastDayOfWeek from '../lastDayOfWeek/index'
+import lastDayOfWeek from '../lastDayOfWeek/index';
 
 /**
  * @name lastDayOfISOWeek
@@ -19,8 +19,6 @@ import lastDayOfWeek from '../lastDayOfWeek/index'
  * const result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function lastDayOfISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  return lastDayOfWeek(dirtyDate, { weekStartsOn: 1 })
+export default function lastDayOfISOWeek(dirtyDate: Date | number): Date {
+	return lastDayOfWeek(dirtyDate, { weekStartsOn: 1 });
 }

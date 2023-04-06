@@ -1,5 +1,5 @@
-import isLeapYear from '../isLeapYear/index'
-import toDate from '../toDate/index'
+import isLeapYear from '../isLeapYear/index';
+import toDate from '../toDate/index';
 
 /**
  * @name getDaysInYear
@@ -17,14 +17,12 @@ import toDate from '../toDate/index'
  * const result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-export default function getDaysInYear<DateType extends Date>(
-  dirtyDate: DateType | number
-): number {
-  const date = toDate(dirtyDate)
+export default function getDaysInYear(dirtyDate: Date | number): number {
+	const date = toDate(dirtyDate);
 
-  if (String(new Date(date)) === 'Invalid Date') {
-    return NaN
-  }
+	if (String(new Date(date)) === 'Invalid Date') {
+		return NaN;
+	}
 
-  return isLeapYear(date) ? 366 : 365
+	return isLeapYear(date) ? 366 : 365;
 }

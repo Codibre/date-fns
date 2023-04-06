@@ -1,4 +1,4 @@
-import addMilliseconds from '../addMilliseconds/index'
+import addMilliseconds from '../addMilliseconds/index';
 
 /**
  * @name subMilliseconds
@@ -17,9 +17,9 @@ import addMilliseconds from '../addMilliseconds/index'
  * const result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:29.250
  */
-export default function subMilliseconds<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addMilliseconds(dirtyDate, -amount)
+export default function subMilliseconds(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addMilliseconds(dirtyDate, -amount);
 }

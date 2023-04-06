@@ -6,7 +6,7 @@
  * @type {number}
  * @default
  */
-export const daysInWeek = 7
+export const daysInWeek = 7;
 
 /**
  * Days in 1 year
@@ -20,7 +20,7 @@ export const daysInWeek = 7
  * @type {number}
  * @default
  */
-export const daysInYear: number = 365.2425
+export const daysInYear: number = 365.2425;
 
 /**
  * Maximum allowed time.
@@ -30,7 +30,7 @@ export const daysInYear: number = 365.2425
  * @type {number}
  * @default
  */
-export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000
+export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000;
 
 /**
  * Milliseconds in 1 week.
@@ -40,7 +40,7 @@ export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000
  * @type {number}
  * @default
  */
-export const millisecondsInWeek = 604800000
+export const millisecondsInWeek = 604800000;
 
 /**
  * Milliseconds in 1 day.
@@ -50,7 +50,7 @@ export const millisecondsInWeek = 604800000
  * @type {number}
  * @default
  */
-export const millisecondsInDay = 86400000
+export const millisecondsInDay = 86400000;
 
 /**
  * Milliseconds in 1 minute
@@ -60,7 +60,7 @@ export const millisecondsInDay = 86400000
  * @type {number}
  * @default
  */
-export const millisecondsInMinute = 60000
+export const millisecondsInMinute = 60000;
 
 /**
  * Milliseconds in 1 hour
@@ -70,7 +70,7 @@ export const millisecondsInMinute = 60000
  * @type {number}
  * @default
  */
-export const millisecondsInHour = 3600000
+export const millisecondsInHour = 3600000;
 
 /**
  * Milliseconds in 1 second
@@ -80,7 +80,7 @@ export const millisecondsInHour = 3600000
  * @type {number}
  * @default
  */
-export const millisecondsInSecond = 1000
+export const millisecondsInSecond = 1000;
 
 /**
  * Minimum allowed time.
@@ -90,7 +90,7 @@ export const millisecondsInSecond = 1000
  * @type {number}
  * @default
  */
-export const minTime = -maxTime
+export const minTime = -maxTime;
 
 /**
  * Minutes in 1 year.
@@ -100,7 +100,7 @@ export const minTime = -maxTime
  * @type {number}
  * @default
  */
-export const minutesInYear = 525600
+export const minutesInYear = 525600;
 
 /**
  * Minutes in 1 month.
@@ -110,7 +110,7 @@ export const minutesInYear = 525600
  * @type {number}
  * @default
  */
-export const minutesInMonth = 43200
+export const minutesInMonth = 43200;
 
 /**
  * Minutes in 1 day.
@@ -120,7 +120,7 @@ export const minutesInMonth = 43200
  * @type {number}
  * @default
  */
-export const minutesInDay = 1440
+export const minutesInDay = 1440;
 
 /**
  * Minutes in 1 hour.
@@ -130,7 +130,7 @@ export const minutesInDay = 1440
  * @type {number}
  * @default
  */
-export const minutesInHour = 60
+export const minutesInHour = 60;
 
 /**
  * Months in 1 quarter.
@@ -140,7 +140,7 @@ export const minutesInHour = 60
  * @type {number}
  * @default
  */
-export const monthsInQuarter = 3
+export const monthsInQuarter = 3;
 
 /**
  * Months in 1 year.
@@ -150,7 +150,7 @@ export const monthsInQuarter = 3
  * @type {number}
  * @default
  */
-export const monthsInYear = 12
+export const monthsInYear = 12;
 
 /**
  * Quarters in 1 year
@@ -160,7 +160,7 @@ export const monthsInYear = 12
  * @type {number}
  * @default
  */
-export const quartersInYear = 4
+export const quartersInYear = 4;
 
 /**
  * Seconds in 1 hour.
@@ -170,7 +170,7 @@ export const quartersInYear = 4
  * @type {number}
  * @default
  */
-export const secondsInHour = 3600
+export const secondsInHour = 3600;
 
 /**
  * Seconds in 1 minute.
@@ -180,7 +180,7 @@ export const secondsInHour = 3600
  * @type {number}
  * @default
  */
-export const secondsInMinute = 60
+export const secondsInMinute = 60;
 
 /**
  * Seconds in 1 day.
@@ -190,7 +190,7 @@ export const secondsInMinute = 60
  * @type {number}
  * @default
  */
-export const secondsInDay = secondsInHour * 24
+export const secondsInDay = secondsInHour * 24;
 
 /**
  * Seconds in 1 week.
@@ -200,7 +200,7 @@ export const secondsInDay = secondsInHour * 24
  * @type {number}
  * @default
  */
-export const secondsInWeek = secondsInDay * 7
+export const secondsInWeek = secondsInDay * 7;
 
 /**
  * Seconds in 1 year.
@@ -210,7 +210,7 @@ export const secondsInWeek = secondsInDay * 7
  * @type {number}
  * @default
  */
-export const secondsInYear = secondsInDay * daysInYear
+export const secondsInYear = secondsInDay * daysInYear;
 
 /**
  * Seconds in 1 month
@@ -220,7 +220,7 @@ export const secondsInYear = secondsInDay * daysInYear
  * @type {number}
  * @default
  */
-export const secondsInMonth = secondsInYear / 12
+export const secondsInMonth = secondsInYear / 12;
 
 /**
  * Seconds in 1 quarter.
@@ -230,4 +230,4 @@ export const secondsInMonth = secondsInYear / 12
  * @type {number}
  * @default
  */
-export const secondsInQuarter = secondsInMonth * 3
+export const secondsInQuarter = secondsInMonth * 3;

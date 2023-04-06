@@ -1,6 +1,6 @@
-import addDays from '../addDays/index'
-import getISODay from '../getISODay/index'
-import toDate from '../toDate/index'
+import addDays from '../addDays/index';
+import getISODay from '../getISODay/index';
+import toDate from '../toDate/index';
 
 /**
  * @name setISODay
@@ -21,12 +21,9 @@ import toDate from '../toDate/index'
  * const result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setISODay<DateType extends Date>(
-  dirtyDate: DateType | number,
-  day: number
-): DateType {
-  const date = toDate(dirtyDate)
-  const currentDay = getISODay(date)
-  const diff = day - currentDay
-  return addDays(date, diff)
+export default function setISODay(dirtyDate: Date | number, day: number): Date {
+	const date = toDate(dirtyDate);
+	const currentDay = getISODay(date);
+	const diff = day - currentDay;
+	return addDays(date, diff);
 }

@@ -1,7 +1,7 @@
-import eachDayOfInterval from '../eachDayOfInterval/index'
-import isSunday from '../isSunday/index'
-import isWeekend from '../isWeekend/index'
-import type { Interval } from '../types'
+import eachDayOfInterval from '../eachDayOfInterval/index';
+import isSunday from '../isSunday/index';
+import isWeekend from '../isWeekend/index';
+import type { Interval } from '../types';
 
 /**
  * @name eachWeekendOfInterval
@@ -29,18 +29,16 @@ import type { Interval } from '../types'
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
-): DateType[] {
-  const dateInterval = eachDayOfInterval(interval)
-  const weekends = []
-  let index = 0
-  while (index < dateInterval.length) {
-    const date = dateInterval[index++]
-    if (isWeekend(date)) {
-      weekends.push(date)
-      if (isSunday(date)) index = index + 5
-    }
-  }
-  return weekends
+export default function eachWeekendOfInterval(interval: Interval): Date[] {
+	const dateInterval = eachDayOfInterval(interval);
+	const weekends = [];
+	let index = 0;
+	while (index < dateInterval.length) {
+		const date = dateInterval[index++];
+		if (isWeekend(date)) {
+			weekends.push(date);
+			if (isSunday(date)) index = index + 5;
+		}
+	}
+	return weekends;
 }

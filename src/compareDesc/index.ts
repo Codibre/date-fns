@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name compareDesc
@@ -31,21 +31,21 @@ import toDate from '../toDate/index'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function compareDesc(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+	const dateLeft = toDate(dirtyDateLeft);
+	const dateRight = toDate(dirtyDateRight);
 
-  const diff = dateLeft.getTime() - dateRight.getTime()
+	const diff = dateLeft.getTime() - dateRight.getTime();
 
-  if (diff > 0) {
-    return -1
-  } else if (diff < 0) {
-    return 1
-    // Return 0 if diff is 0; return NaN if diff is NaN
-  } else {
-    return diff
-  }
+	if (diff > 0) {
+		return -1;
+	} else if (diff < 0) {
+		return 1;
+		// Return 0 if diff is 0; return NaN if diff is NaN
+	} else {
+		return diff;
+	}
 }

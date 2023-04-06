@@ -1,5 +1,5 @@
-import getISOWeek from '../getISOWeek/index'
-import toDate from '../toDate/index'
+import getISOWeek from '../getISOWeek/index';
+import toDate from '../toDate/index';
 
 /**
  * @name setISOWeek
@@ -20,12 +20,12 @@ import toDate from '../toDate/index'
  * const result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
-  isoWeek: number
-): DateType {
-  const date = toDate(dirtyDate)
-  const diff = getISOWeek(date) - isoWeek
-  date.setDate(date.getDate() - diff * 7)
-  return date
+export default function setISOWeek(
+	dirtyDate: Date | number,
+	isoWeek: number,
+): Date {
+	const date = toDate(dirtyDate);
+	const diff = getISOWeek(date) - isoWeek;
+	date.setDate(date.getDate() - diff * 7);
+	return date;
 }

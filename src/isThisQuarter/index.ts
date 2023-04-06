@@ -1,4 +1,4 @@
-import isSameQuarter from '../isSameQuarter/index'
+import isSameQuarter from '../isSameQuarter/index';
 
 /**
  * @name isThisQuarter
@@ -20,8 +20,6 @@ import isSameQuarter from '../isSameQuarter/index'
  * const result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisQuarter<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameQuarter(Date.now(), dirtyDate)
+export default function isThisQuarter(dirtyDate: Date | number): boolean {
+	return isSameQuarter(Date.now(), dirtyDate);
 }

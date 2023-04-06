@@ -1,8 +1,8 @@
 import {
-  getDefaultOptions,
-  setDefaultOptions as setInternalDefaultOptions,
-  DefaultOptions,
-} from '../_lib/defaultOptions/index'
+	getDefaultOptions,
+	setDefaultOptions as setInternalDefaultOptions,
+	DefaultOptions,
+} from '../_lib/defaultOptions/index';
 
 /**
  * @name setDefaultOptions
@@ -53,26 +53,26 @@ import {
  * //=> Sun Aug 31 2014 00:00:00
  */
 export default function setDefaultOptions(newOptions: DefaultOptions): void {
-  const result: DefaultOptions = {}
-  const defaultOptions = getDefaultOptions()
+	const result: DefaultOptions = {};
+	const defaultOptions = getDefaultOptions();
 
-  for (const property in defaultOptions) {
-    if (Object.prototype.hasOwnProperty.call(defaultOptions, property)) {
-      ;(result as any)[property] =
-        defaultOptions[property as keyof DefaultOptions]
-    }
-  }
+	for (const property in defaultOptions) {
+		if (Object.prototype.hasOwnProperty.call(defaultOptions, property)) {
+			(result as any)[property] =
+				defaultOptions[property as keyof DefaultOptions];
+		}
+	}
 
-  for (const property in newOptions) {
-    if (Object.prototype.hasOwnProperty.call(newOptions, property)) {
-      if (newOptions[property as keyof DefaultOptions] === undefined) {
-        delete (result as any)[property]
-      } else {
-        ;(result as any)[property] =
-          newOptions[property as keyof DefaultOptions]
-      }
-    }
-  }
+	for (const property in newOptions) {
+		if (Object.prototype.hasOwnProperty.call(newOptions, property)) {
+			if (newOptions[property as keyof DefaultOptions] === undefined) {
+				delete (result as any)[property];
+			} else {
+				(result as any)[property] =
+					newOptions[property as keyof DefaultOptions];
+			}
+		}
+	}
 
-  setInternalDefaultOptions(result)
+	setInternalDefaultOptions(result);
 }

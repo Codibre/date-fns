@@ -1,4 +1,4 @@
-import isSameISOWeek from '../isSameISOWeek/index'
+import isSameISOWeek from '../isSameISOWeek/index';
 
 /**
  * @name isThisISOWeek
@@ -23,8 +23,6 @@ import isSameISOWeek from '../isSameISOWeek/index'
  * //=> true
  */
 
-export default function isThisISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameISOWeek(dirtyDate, Date.now())
+export default function isThisISOWeek(dirtyDate: Date | number): boolean {
+	return isSameISOWeek(dirtyDate, Date.now());
 }

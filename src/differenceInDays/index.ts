@@ -1,31 +1,28 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import toDate from '../toDate/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index';
+import toDate from '../toDate/index';
 
 // Like `compareAsc` but uses local time not UTC, which is needed
 // for accurate equality comparisons of UTC timestamps that end up
 // having the same representation in local time, e.g. one hour before
 // DST ends vs. the instant that DST ends.
-function compareLocalAsc<DateType extends Date>(
-  dateLeft: DateType,
-  dateRight: DateType
-): number {
-  const diff =
-    dateLeft.getFullYear() - dateRight.getFullYear() ||
-    dateLeft.getMonth() - dateRight.getMonth() ||
-    dateLeft.getDate() - dateRight.getDate() ||
-    dateLeft.getHours() - dateRight.getHours() ||
-    dateLeft.getMinutes() - dateRight.getMinutes() ||
-    dateLeft.getSeconds() - dateRight.getSeconds() ||
-    dateLeft.getMilliseconds() - dateRight.getMilliseconds()
+function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
+	const diff =
+		dateLeft.getFullYear() - dateRight.getFullYear() ||
+		dateLeft.getMonth() - dateRight.getMonth() ||
+		dateLeft.getDate() - dateRight.getDate() ||
+		dateLeft.getHours() - dateRight.getHours() ||
+		dateLeft.getMinutes() - dateRight.getMinutes() ||
+		dateLeft.getSeconds() - dateRight.getSeconds() ||
+		dateLeft.getMilliseconds() - dateRight.getMilliseconds();
 
-  if (diff < 0) {
-    return -1
-  } else if (diff > 0) {
-    return 1
-    // Return 0 if diff is 0; return NaN if diff is NaN
-  } else {
-    return diff
-  }
+	if (diff < 0) {
+		return -1;
+	} else if (diff > 0) {
+		return 1;
+		// Return 0 if diff is 0; return NaN if diff is NaN
+	} else {
+		return diff;
+	}
 }
 
 /**
@@ -76,24 +73,24 @@ function compareLocalAsc<DateType extends Date>(
  * )
 //=> 92
  */
-export default function differenceInDays<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function differenceInDays(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+	const dateLeft = toDate(dirtyDateLeft);
+	const dateRight = toDate(dirtyDateRight);
 
-  const sign = compareLocalAsc(dateLeft, dateRight)
-  const difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+	const sign = compareLocalAsc(dateLeft, dateRight);
+	const difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight));
 
-  dateLeft.setDate(dateLeft.getDate() - sign * difference)
+	dateLeft.setDate(dateLeft.getDate() - sign * difference);
 
-  // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
-  // If so, result must be decreased by 1 in absolute value
-  const isLastDayNotFull = Number(
-    compareLocalAsc(dateLeft, dateRight) === -sign
-  )
-  const result = sign * (difference - isLastDayNotFull)
-  // Prevent negative zero
-  return result === 0 ? 0 : result
+	// Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
+	// If so, result must be decreased by 1 in absolute value
+	const isLastDayNotFull = Number(
+		compareLocalAsc(dateLeft, dateRight) === -sign,
+	);
+	const result = sign * (difference - isLastDayNotFull);
+	// Prevent negative zero
+	return result === 0 ? 0 : result;
 }

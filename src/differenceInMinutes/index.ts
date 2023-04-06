@@ -1,7 +1,7 @@
-import { millisecondsInMinute } from '../constants/index'
-import differenceInMilliseconds from '../differenceInMilliseconds/index'
-import type { RoundingOptions } from '../types'
-import { getRoundingMethod } from '../_lib/roundingMethods/index'
+import { millisecondsInMinute } from '../constants/index';
+import differenceInMilliseconds from '../differenceInMilliseconds/index';
+import type { RoundingOptions } from '../types';
+import { getRoundingMethod } from '../_lib/roundingMethods/index';
 
 /**
  * The {@link differenceInMinutes} function options.
@@ -37,12 +37,12 @@ export interface DifferenceInMinutesOptions extends RoundingOptions {}
  * )
  * //=> -1
  */
-export default function differenceInMinutes<DateType extends Date>(
-  dateLeft: DateType | number,
-  dateRight: DateType | number,
-  options?: DifferenceInMinutesOptions
+export default function differenceInMinutes(
+	dateLeft: Date | number,
+	dateRight: Date | number,
+	options?: DifferenceInMinutesOptions,
 ): number {
-  const diff =
-    differenceInMilliseconds(dateLeft, dateRight) / millisecondsInMinute
-  return getRoundingMethod(options?.roundingMethod)(diff)
+	const diff =
+		differenceInMilliseconds(dateLeft, dateRight) / millisecondsInMinute;
+	return getRoundingMethod(options?.roundingMethod)(diff);
 }

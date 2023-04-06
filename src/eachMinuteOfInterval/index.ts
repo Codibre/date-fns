@@ -1,7 +1,7 @@
-import addMinutes from '../addMinutes/index'
-import startOfMinute from '../startOfMinute/index'
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import addMinutes from '../addMinutes/index';
+import startOfMinute from '../startOfMinute/index';
+import toDate from '../toDate/index';
+import type { Interval, StepOptions } from '../types';
 
 /**
  * The {@link eachMinuteOfInterval} function options.
@@ -36,34 +36,34 @@ export interface EachMinuteOfIntervalOptions extends StepOptions {}
  * //   Wed Oct 14 2014 13:03:00
  * // ]
  */
-export default function eachMinuteOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
-  options?: EachMinuteOfIntervalOptions
-): DateType[] {
-  const startDate = startOfMinute(toDate(interval.start))
-  const endDate = toDate(interval.end)
+export default function eachMinuteOfInterval(
+	interval: Interval,
+	options?: EachMinuteOfIntervalOptions,
+): Date[] {
+	const startDate = startOfMinute(toDate(interval.start));
+	const endDate = toDate(interval.end);
 
-  const startTime = startDate.getTime()
-  const endTime = endDate.getTime()
+	const startTime = startDate.getTime();
+	const endTime = endDate.getTime();
 
-  if (startTime >= endTime) {
-    throw new RangeError('Invalid interval')
-  }
+	if (startTime >= endTime) {
+		throw new RangeError('Invalid interval');
+	}
 
-  const dates = []
+	const dates = [];
 
-  let currentDate = startDate
+	let currentDate = startDate;
 
-  const step = options?.step ?? 1
-  if (step < 1 || isNaN(step))
-    throw new RangeError(
-      '`options.step` must be a number equal to or greater than 1'
-    )
+	const step = options?.step ?? 1;
+	if (step < 1 || isNaN(step))
+		{throw new RangeError(
+			'`options.step` must be a number equal to or greater than 1',
+		);}
 
-  while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate = addMinutes(currentDate, step)
-  }
+	while (currentDate.getTime() <= endTime) {
+		dates.push(toDate(currentDate));
+		currentDate = addMinutes(currentDate, step);
+	}
 
-  return dates
+	return dates;
 }

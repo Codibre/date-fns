@@ -1,18 +1,18 @@
-import getWeek from '../getWeek/index'
-import toDate from '../toDate/index'
+import getWeek from '../getWeek/index';
+import toDate from '../toDate/index';
 import type {
-  FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-} from '../types'
+	FirstWeekContainsDateOptions,
+	LocaleOptions,
+	WeekStartOptions,
+} from '../types';
 
 /**
  * The {@link setWeek} function options.
  */
 export interface SetWeekOptions
-  extends LocaleOptions,
-    WeekStartOptions,
-    FirstWeekContainsDateOptions {}
+	extends LocaleOptions,
+		WeekStartOptions,
+		FirstWeekContainsDateOptions {}
 
 /**
  * @name setWeek
@@ -48,13 +48,13 @@ export interface SetWeekOptions
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
-  week: number,
-  options?: SetWeekOptions
-): DateType {
-  const date = toDate(dirtyDate)
-  const diff = getWeek(date, options) - week
-  date.setDate(date.getDate() - diff * 7)
-  return date
+export default function setWeek(
+	dirtyDate: Date | number,
+	week: number,
+	options?: SetWeekOptions,
+): Date {
+	const date = toDate(dirtyDate);
+	const diff = getWeek(date, options) - week;
+	date.setDate(date.getDate() - diff * 7);
+	return date;
 }

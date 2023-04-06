@@ -1,4 +1,4 @@
-import isSameWeek from '../isSameWeek/index'
+import isSameWeek from '../isSameWeek/index';
 
 /**
  * @name isSameISOWeek
@@ -24,9 +24,9 @@ import isSameWeek from '../isSameWeek/index'
  * const result = isSameISOWeek(new Date(2014, 8, 1), new Date(2015, 8, 1))
  * //=> false
  */
-export default function isSameISOWeek<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function isSameISOWeek(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): boolean {
-  return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })
+	return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 });
 }

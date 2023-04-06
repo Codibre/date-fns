@@ -1,4 +1,4 @@
-import startOfDay from '../startOfDay/index'
+import startOfDay from '../startOfDay/index';
 
 /**
  * @name startOfToday
@@ -20,5 +20,5 @@ import startOfDay from '../startOfDay/index'
  * //=> Mon Oct 6 2014 00:00:00
  */
 export default function startOfToday(): Date {
-  return startOfDay(Date.now())
+	return startOfDay(Date.now());
 }

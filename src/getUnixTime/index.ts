@@ -1,4 +1,4 @@
-import getTime from '../getTime/index'
+import getTime from '../getTime/index';
 
 /**
  * @name getUnixTime
@@ -16,8 +16,6 @@ import getTime from '../getTime/index'
  * const result = getUnixTime(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 1330512305
  */
-export default function getUnixTime<DateType extends Date>(
-  dirtyDate: DateType | number
-): number {
-  return Math.floor(getTime(dirtyDate) / 1000)
+export default function getUnixTime(dirtyDate: Date | number): number {
+	return Math.floor(getTime(dirtyDate) / 1000);
 }

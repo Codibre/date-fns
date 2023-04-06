@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name startOfDay
@@ -17,10 +17,8 @@ import toDate from '../toDate/index'
  * const result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 02 2014 00:00:00
  */
-export default function startOfDay<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function startOfDay(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	date.setHours(0, 0, 0, 0);
+	return date;
 }

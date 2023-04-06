@@ -1,4 +1,4 @@
-import endOfWeek from '../endOfWeek/index'
+import endOfWeek from '../endOfWeek/index';
 
 /**
  * @name endOfISOWeek
@@ -19,8 +19,6 @@ import endOfWeek from '../endOfWeek/index'
  * const result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-export default function endOfISOWeek<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  return endOfWeek(dirtyDate, { weekStartsOn: 1 })
+export default function endOfISOWeek(dirtyDate: Date | number): Date {
+	return endOfWeek(dirtyDate, { weekStartsOn: 1 });
 }

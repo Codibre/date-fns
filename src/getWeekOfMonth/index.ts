@@ -1,15 +1,15 @@
-import getDate from '../getDate/index'
-import getDay from '../getDay/index'
-import startOfMonth from '../startOfMonth/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import getDate from '../getDate/index';
+import getDay from '../getDay/index';
+import startOfMonth from '../startOfMonth/index';
+import type { LocaleOptions, WeekStartOptions } from '../types';
+import { getDefaultOptions } from '../_lib/defaultOptions/index';
 
 /**
  * The {@link getWeekOfMonth} function options.
  */
 export interface GetWeekOfMonthOptions
-  extends LocaleOptions,
-    WeekStartOptions {}
+	extends LocaleOptions,
+		WeekStartOptions {}
 
 /**
  * @name getWeekOfMonth
@@ -28,26 +28,26 @@ export interface GetWeekOfMonthOptions
  * const result = getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
-export default function getWeekOfMonth<DateType extends Date>(
-  date: DateType | number,
-  options?: GetWeekOfMonthOptions
+export default function getWeekOfMonth(
+	date: Date | number,
+	options?: GetWeekOfMonthOptions,
 ): number {
-  const defaultOptions = getDefaultOptions()
-  const weekStartsOn =
-    options?.weekStartsOn ??
-    options?.locale?.options?.weekStartsOn ??
-    defaultOptions.weekStartsOn ??
-    defaultOptions.locale?.options?.weekStartsOn ??
-    0
+	const defaultOptions = getDefaultOptions();
+	const weekStartsOn =
+		options?.weekStartsOn ??
+		options?.locale?.options?.weekStartsOn ??
+		defaultOptions.weekStartsOn ??
+		defaultOptions.locale?.options?.weekStartsOn ??
+		0;
 
-  const currentDayOfMonth = getDate(date)
-  if (isNaN(currentDayOfMonth)) return NaN
+	const currentDayOfMonth = getDate(date);
+	if (isNaN(currentDayOfMonth)) return NaN;
 
-  const startWeekDay = getDay(startOfMonth(date))
+	const startWeekDay = getDay(startOfMonth(date));
 
-  let lastDayOfFirstWeek = weekStartsOn - startWeekDay
-  if (lastDayOfFirstWeek <= 0) lastDayOfFirstWeek += 7
+	let lastDayOfFirstWeek = weekStartsOn - startWeekDay;
+	if (lastDayOfFirstWeek <= 0) lastDayOfFirstWeek += 7;
 
-  const remainingDaysAfterFirstWeek = currentDayOfMonth - lastDayOfFirstWeek
-  return Math.ceil(remainingDaysAfterFirstWeek / 7) + 1
+	const remainingDaysAfterFirstWeek = currentDayOfMonth - lastDayOfFirstWeek;
+	return Math.ceil(remainingDaysAfterFirstWeek / 7) + 1;
 }

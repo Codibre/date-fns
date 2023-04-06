@@ -1,4 +1,4 @@
-import addDays from '../addDays/index'
+import addDays from '../addDays/index';
 
 /**
  * @name subDays
@@ -17,9 +17,9 @@ import addDays from '../addDays/index'
  * const result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
-export default function subDays<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addDays(dirtyDate, -amount)
+export default function subDays(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addDays(dirtyDate, -amount);
 }

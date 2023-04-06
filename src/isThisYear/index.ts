@@ -1,4 +1,4 @@
-import isSameYear from '../isSameYear/index'
+import isSameYear from '../isSameYear/index';
 
 /**
  * @name isThisYear
@@ -20,8 +20,6 @@ import isSameYear from '../isSameYear/index'
  * const result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisYear<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameYear(dirtyDate, Date.now())
+export default function isThisYear(dirtyDate: Date | number): boolean {
+	return isSameYear(dirtyDate, Date.now());
 }

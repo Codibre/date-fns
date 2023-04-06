@@ -1,4 +1,4 @@
-import { secondsInHour } from '../constants/index'
+import { secondsInHour } from '../constants/index';
 
 /**
  * @name hoursToSeconds
@@ -18,5 +18,5 @@ import { secondsInHour } from '../constants/index'
  * //=> 7200
  */
 export default function hoursToSeconds(hours: number): number {
-  return Math.floor(hours * secondsInHour)
+	return Math.floor(hours * secondsInHour);
 }

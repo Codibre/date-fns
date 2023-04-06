@@ -1,4 +1,4 @@
-import addSeconds from '../addSeconds/index'
+import addSeconds from '../addSeconds/index';
 
 /**
  * @name subSeconds
@@ -17,9 +17,9 @@ import addSeconds from '../addSeconds/index'
  * const result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-export default function subSeconds<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addSeconds(dirtyDate, -amount)
+export default function subSeconds(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addSeconds(dirtyDate, -amount);
 }

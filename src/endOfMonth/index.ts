@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name endOfMonth
@@ -17,12 +17,10 @@ import toDate from '../toDate/index'
  * const result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
-export default function endOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  const month = date.getMonth()
-  date.setFullYear(date.getFullYear(), month + 1, 0)
-  date.setHours(23, 59, 59, 999)
-  return date
+export default function endOfMonth(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	const month = date.getMonth();
+	date.setFullYear(date.getFullYear(), month + 1, 0);
+	date.setHours(23, 59, 59, 999);
+	return date;
 }

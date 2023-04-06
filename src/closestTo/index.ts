@@ -1,5 +1,5 @@
-import constructFrom from '../constructFrom/index'
-import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index';
+import toDate from '../toDate/index';
 
 /**
  * @name closestTo
@@ -22,34 +22,34 @@ import toDate from '../toDate/index'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo<DateType extends Date>(
-  dirtyDateToCompare: DateType | number,
-  datesArray: Array<DateType | number>
-): DateType | undefined {
-  const dateToCompare = toDate(dirtyDateToCompare)
+export default function closestTo(
+	dirtyDateToCompare: Date | number,
+	datesArray: Array<Date | number>,
+): Date | undefined {
+	const dateToCompare = toDate(dirtyDateToCompare);
 
-  if (isNaN(Number(dateToCompare)))
-    return constructFrom(dirtyDateToCompare, NaN)
+	if (isNaN(Number(dateToCompare)))
+		{return constructFrom(dirtyDateToCompare, NaN);}
 
-  const timeToCompare = dateToCompare.getTime()
+	const timeToCompare = dateToCompare.getTime();
 
-  let result: DateType | undefined
-  let minDistance: number
-  datesArray.forEach((dirtyDate) => {
-    const currentDate = toDate(dirtyDate)
+	let result: Date | undefined;
+	let minDistance: number;
+	datesArray.forEach((dirtyDate) => {
+		const currentDate = toDate(dirtyDate);
 
-    if (isNaN(Number(currentDate))) {
-      result = constructFrom(dirtyDateToCompare, NaN)
-      minDistance = NaN
-      return
-    }
+		if (isNaN(Number(currentDate))) {
+			result = constructFrom(dirtyDateToCompare, NaN);
+			minDistance = NaN;
+			return;
+		}
 
-    const distance = Math.abs(timeToCompare - currentDate.getTime())
-    if (result == null || distance < minDistance) {
-      result = currentDate
-      minDistance = distance
-    }
-  })
+		const distance = Math.abs(timeToCompare - currentDate.getTime());
+		if (result == null || distance < minDistance) {
+			result = currentDate;
+			minDistance = distance;
+		}
+	});
 
-  return result
+	return result;
 }

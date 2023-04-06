@@ -1,4 +1,4 @@
-import { millisecondsInHour } from '../constants/index'
+import { millisecondsInHour } from '../constants/index';
 
 /**
  * @name hoursToMilliseconds
@@ -18,5 +18,5 @@ import { millisecondsInHour } from '../constants/index'
  * //=> 7200000
  */
 export default function hoursToMilliseconds(hours: number): number {
-  return Math.floor(hours * millisecondsInHour)
+	return Math.floor(hours * millisecondsInHour);
 }

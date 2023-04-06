@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name lastDayOfMonth
@@ -17,12 +17,10 @@ import toDate from '../toDate/index'
  * const result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function lastDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  const month = date.getMonth()
-  date.setFullYear(date.getFullYear(), month + 1, 0)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function lastDayOfMonth(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	const month = date.getMonth();
+	date.setFullYear(date.getFullYear(), month + 1, 0);
+	date.setHours(0, 0, 0, 0);
+	return date;
 }

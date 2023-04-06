@@ -1,21 +1,32 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["dom", "es2020", "es2018.promise", "ESNext.Intl"],
+    "baseUrl": ".",
     "strict": true,
-    "moduleResolution": "nodenext",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "declaration": true,
     "strictNullChecks": true,
-    "importHelpers": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "allowJs": true,
-    "skipLibCheck": true
-  },
-  "exclude": ["node_modules", "dist", "tmp", "examples"]
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importsNotUsedAsValues": "remove",
+    "target": "es2018",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "skipLibCheck": true,
+    "useUnknownInCatchVariables": false,
+    "paths": {
+      "@booking/*": ["./src/api-wooba-air-booking/*"],
+      "@commons": ["./src/commons/index"],
+      "@commons/*": ["./src/commons/*"],
+      "@entrypoint/*": ["./src/entrypoint/*"],
+      "@shopping/*": ["./src/api-wooba-air-shopping/*"],
+      "test/*": ["./test/*"]
+    }
+  }
 }

@@ -1,20 +1,20 @@
-import { millisecondsInWeek } from '../constants/index'
-import startOfWeek from '../startOfWeek/index'
-import startOfWeekYear from '../startOfWeekYear/index'
-import toDate from '../toDate/index'
+import { millisecondsInWeek } from '../constants/index';
+import startOfWeek from '../startOfWeek/index';
+import startOfWeekYear from '../startOfWeekYear/index';
+import toDate from '../toDate/index';
 import type {
-  FirstWeekContainsDateOptions,
-  LocaleOptions,
-  WeekStartOptions,
-} from '../types'
+	FirstWeekContainsDateOptions,
+	LocaleOptions,
+	WeekStartOptions,
+} from '../types';
 
 /**
  * The {@link getWeek} function options.
  */
 export interface GetWeekOptions
-  extends LocaleOptions,
-    WeekStartOptions,
-    FirstWeekContainsDateOptions {}
+	extends LocaleOptions,
+		WeekStartOptions,
+		FirstWeekContainsDateOptions {}
 
 /**
  * @name getWeek
@@ -49,17 +49,17 @@ export interface GetWeekOptions
  * //=> 53
  */
 
-export default function getWeek<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: GetWeekOptions
+export default function getWeek(
+	dirtyDate: Date | number,
+	options?: GetWeekOptions,
 ): number {
-  const date = toDate(dirtyDate)
-  const diff =
-    startOfWeek(date, options).getTime() -
-    startOfWeekYear(date, options).getTime()
+	const date = toDate(dirtyDate);
+	const diff =
+		startOfWeek(date, options).getTime() -
+		startOfWeekYear(date, options).getTime();
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round(diff / millisecondsInWeek) + 1
+	// Round the number of days to the nearest integer
+	// because the number of milliseconds in a week is not constant
+	// (e.g. it's different in the week of the daylight saving time clock shift)
+	return Math.round(diff / millisecondsInWeek) + 1;
 }

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name compareAsc
@@ -31,21 +31,21 @@ import toDate from '../toDate/index'
  * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-export default function compareAsc<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function compareAsc(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+	const dateLeft = toDate(dirtyDateLeft);
+	const dateRight = toDate(dirtyDateRight);
 
-  const diff = dateLeft.getTime() - dateRight.getTime()
+	const diff = dateLeft.getTime() - dateRight.getTime();
 
-  if (diff < 0) {
-    return -1
-  } else if (diff > 0) {
-    return 1
-    // Return 0 if diff is 0; return NaN if diff is NaN
-  } else {
-    return diff
-  }
+	if (diff < 0) {
+		return -1;
+	} else if (diff > 0) {
+		return 1;
+		// Return 0 if diff is 0; return NaN if diff is NaN
+	} else {
+		return diff;
+	}
 }

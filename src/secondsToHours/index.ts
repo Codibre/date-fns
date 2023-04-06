@@ -1,4 +1,4 @@
-import { secondsInHour } from '../constants/index'
+import { secondsInHour } from '../constants/index';
 
 /**
  * @name secondsToHours
@@ -23,6 +23,6 @@ import { secondsInHour } from '../constants/index'
  * //=> 1
  */
 export default function secondsToHours(seconds: number): number {
-  const hours = seconds / secondsInHour
-  return Math.floor(hours)
+	const hours = seconds / secondsInHour;
+	return Math.floor(hours);
 }

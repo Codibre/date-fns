@@ -1,4 +1,4 @@
-import { daysInWeek } from '../constants/index'
+import { daysInWeek } from '../constants/index';
 
 /**
  * @name weeksToDays
@@ -18,5 +18,5 @@ import { daysInWeek } from '../constants/index'
  * //=> 14
  */
 export default function weeksToDays(weeks: number): number {
-  return Math.floor(weeks * daysInWeek)
+	return Math.floor(weeks * daysInWeek);
 }

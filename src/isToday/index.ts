@@ -1,4 +1,4 @@
-import isSameDay from '../isSameDay/index'
+import isSameDay from '../isSameDay/index';
 
 /**
  * @name isToday
@@ -20,8 +20,6 @@ import isSameDay from '../isSameDay/index'
  * const result = isToday(new Date(2014, 9, 6, 14, 0))
  * //=> true
  */
-export default function isToday<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameDay(dirtyDate, Date.now())
+export default function isToday(dirtyDate: Date | number): boolean {
+	return isSameDay(dirtyDate, Date.now());
 }

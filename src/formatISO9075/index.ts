@@ -1,14 +1,14 @@
-import isValid from '../isValid/index'
-import toDate from '../toDate/index'
-import type { FormatOptions, RepresentationOptions } from '../types'
-import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import isValid from '../isValid/index';
+import toDate from '../toDate/index';
+import type { FormatOptions, RepresentationOptions } from '../types';
+import addLeadingZeros from '../_lib/addLeadingZeros/index';
 
 /**
  * The {@link formatISO9075} function options.
  */
 export interface FormatISO9075Options
-  extends FormatOptions,
-    RepresentationOptions {}
+	extends FormatOptions,
+		RepresentationOptions {}
 
 /**
  * @name formatISO9075
@@ -43,46 +43,46 @@ export interface FormatISO9075Options
  * const result = formatISO9075(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52'
  */
-export default function formatISO9075<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: FormatISO9075Options
+export default function formatISO9075(
+	dirtyDate: Date | number,
+	options?: FormatISO9075Options,
 ): string {
-  const originalDate = toDate(dirtyDate)
+	const originalDate = toDate(dirtyDate);
 
-  if (!isValid(originalDate)) {
-    throw new RangeError('Invalid time value')
-  }
+	if (!isValid(originalDate)) {
+		throw new RangeError('Invalid time value');
+	}
 
-  const format = options?.format ?? 'extended'
-  const representation = options?.representation ?? 'complete'
+	const format = options?.format ?? 'extended';
+	const representation = options?.representation ?? 'complete';
 
-  let result = ''
+	let result = '';
 
-  const dateDelimiter = format === 'extended' ? '-' : ''
-  const timeDelimiter = format === 'extended' ? ':' : ''
+	const dateDelimiter = format === 'extended' ? '-' : '';
+	const timeDelimiter = format === 'extended' ? ':' : '';
 
-  // Representation is either 'date' or 'complete'
-  if (representation !== 'time') {
-    const day = addLeadingZeros(originalDate.getDate(), 2)
-    const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
-    const year = addLeadingZeros(originalDate.getFullYear(), 4)
+	// Representation is either 'date' or 'complete'
+	if (representation !== 'time') {
+		const day = addLeadingZeros(originalDate.getDate(), 2);
+		const month = addLeadingZeros(originalDate.getMonth() + 1, 2);
+		const year = addLeadingZeros(originalDate.getFullYear(), 4);
 
-    // yyyyMMdd or yyyy-MM-dd.
-    result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`
-  }
+		// yyyyMMdd or yyyy-MM-dd.
+		result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`;
+	}
 
-  // Representation is either 'time' or 'complete'
-  if (representation !== 'date') {
-    const hour = addLeadingZeros(originalDate.getHours(), 2)
-    const minute = addLeadingZeros(originalDate.getMinutes(), 2)
-    const second = addLeadingZeros(originalDate.getSeconds(), 2)
+	// Representation is either 'time' or 'complete'
+	if (representation !== 'date') {
+		const hour = addLeadingZeros(originalDate.getHours(), 2);
+		const minute = addLeadingZeros(originalDate.getMinutes(), 2);
+		const second = addLeadingZeros(originalDate.getSeconds(), 2);
 
-    // If there's also date, separate it with time with a space
-    const separator = result === '' ? '' : ' '
+		// If there's also date, separate it with time with a space
+		const separator = result === '' ? '' : ' ';
 
-    // HHmmss or HH:mm:ss.
-    result = `${result}${separator}${hour}${timeDelimiter}${minute}${timeDelimiter}${second}`
-  }
+		// HHmmss or HH:mm:ss.
+		result = `${result}${separator}${hour}${timeDelimiter}${minute}${timeDelimiter}${second}`;
+	}
 
-  return result
+	return result;
 }

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name isFirstDayOfMonth
@@ -16,8 +16,6 @@ import toDate from '../toDate/index'
  * const result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export default function isFirstDayOfMonth<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return toDate(dirtyDate).getDate() === 1
+export default function isFirstDayOfMonth(dirtyDate: Date | number): boolean {
+	return toDate(dirtyDate).getDate() === 1;
 }

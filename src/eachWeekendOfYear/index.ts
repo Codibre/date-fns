@@ -1,6 +1,6 @@
-import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
-import endOfYear from '../endOfYear/index'
-import startOfYear from '../startOfYear/index'
+import eachWeekendOfInterval from '../eachWeekendOfInterval/index';
+import endOfYear from '../endOfYear/index';
+import startOfYear from '../startOfYear/index';
 
 /**
  * @name eachWeekendOfYear
@@ -25,10 +25,8 @@ import startOfYear from '../startOfYear/index'
  * // ]
  * ]
  */
-export default function eachWeekendOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType[] {
-  const startDate = startOfYear(dirtyDate)
-  const endDate = endOfYear(dirtyDate)
-  return eachWeekendOfInterval({ start: startDate, end: endDate })
+export default function eachWeekendOfYear(dirtyDate: Date | number): Date[] {
+	const startDate = startOfYear(dirtyDate);
+	const endDate = endOfYear(dirtyDate);
+	return eachWeekendOfInterval({ start: startDate, end: endDate });
 }

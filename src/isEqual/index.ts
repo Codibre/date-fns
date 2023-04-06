@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name isEqual
@@ -20,11 +20,11 @@ import toDate from '../toDate/index'
  * )
  * //=> false
  */
-export default function isEqual<DateType extends Date>(
-  dirtyLeftDate: DateType | number,
-  dirtyRightDate: DateType | number
+export default function isEqual(
+	dirtyLeftDate: Date | number,
+	dirtyRightDate: Date | number,
 ): boolean {
-  const dateLeft = toDate(dirtyLeftDate)
-  const dateRight = toDate(dirtyRightDate)
-  return dateLeft.getTime() === dateRight.getTime()
+	const dateLeft = toDate(dirtyLeftDate);
+	const dateRight = toDate(dirtyRightDate);
+	return dateLeft.getTime() === dateRight.getTime();
 }

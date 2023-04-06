@@ -1,6 +1,6 @@
-import constructFrom from '../constructFrom/index'
-import getDaysInMonth from '../getDaysInMonth/index'
-import toDate from '../toDate/index'
+import constructFrom from '../constructFrom/index';
+import getDaysInMonth from '../getDaysInMonth/index';
+import toDate from '../toDate/index';
 
 /**
  * @name setMonth
@@ -19,20 +19,20 @@ import toDate from '../toDate/index'
  * const result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
  */
-export default function setMonth<DateType extends Date>(
-  dirtyDate: DateType | number,
-  month: number
-): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  const day = date.getDate()
+export default function setMonth(
+	dirtyDate: Date | number,
+	month: number,
+): Date {
+	const date = toDate(dirtyDate);
+	const year = date.getFullYear();
+	const day = date.getDate();
 
-  const dateWithDesiredMonth = constructFrom(dirtyDate, 0)
-  dateWithDesiredMonth.setFullYear(year, month, 15)
-  dateWithDesiredMonth.setHours(0, 0, 0, 0)
-  const daysInMonth = getDaysInMonth(dateWithDesiredMonth)
-  // Set the last day of the new month
-  // if the original date was the last day of the longer month
-  date.setMonth(month, Math.min(day, daysInMonth))
-  return date
+	const dateWithDesiredMonth = constructFrom(dirtyDate, 0);
+	dateWithDesiredMonth.setFullYear(year, month, 15);
+	dateWithDesiredMonth.setHours(0, 0, 0, 0);
+	const daysInMonth = getDaysInMonth(dateWithDesiredMonth);
+	// Set the last day of the new month
+	// if the original date was the last day of the longer month
+	date.setMonth(month, Math.min(day, daysInMonth));
+	return date;
 }

@@ -1,4 +1,4 @@
-import addQuarters from '../addQuarters/index'
+import addQuarters from '../addQuarters/index';
 
 /**
  * @name subQuarters
@@ -17,9 +17,9 @@ import addQuarters from '../addQuarters/index'
  * const result = subQuarters(new Date(2014, 8, 1), 3)
  * //=> Sun Dec 01 2013 00:00:00
  */
-export default function subQuarters<DateType extends Date>(
-  dirtyDate: DateType | number,
-  amount: number
-): DateType {
-  return addQuarters(dirtyDate, -amount)
+export default function subQuarters(
+	dirtyDate: Date | number,
+	amount: number,
+): Date {
+	return addQuarters(dirtyDate, -amount);
 }

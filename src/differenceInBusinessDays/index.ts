@@ -1,9 +1,9 @@
-import addDays from '../addDays/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import isSameDay from '../isSameDay/index'
-import isValid from '../isValid/index'
-import isWeekend from '../isWeekend/index'
-import toDate from '../toDate/index'
+import addDays from '../addDays/index';
+import differenceInCalendarDays from '../differenceInCalendarDays/index';
+import isSameDay from '../isSameDay/index';
+import isValid from '../isValid/index';
+import isWeekend from '../isWeekend/index';
+import toDate from '../toDate/index';
 
 /**
  * @name differenceInBusinessDays
@@ -53,29 +53,29 @@ import toDate from '../toDate/index'
  * )
  * //=> 0
  */
-export default function differenceInBusinessDays<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function differenceInBusinessDays(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): number {
-  const dateLeft = toDate(dirtyDateLeft)
-  let dateRight = toDate(dirtyDateRight)
+	const dateLeft = toDate(dirtyDateLeft);
+	let dateRight = toDate(dirtyDateRight);
 
-  if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
+	if (!isValid(dateLeft) || !isValid(dateRight)) return NaN;
 
-  const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
-  const sign = calendarDifference < 0 ? -1 : 1
+	const calendarDifference = differenceInCalendarDays(dateLeft, dateRight);
+	const sign = calendarDifference < 0 ? -1 : 1;
 
-  const weeks = Math.trunc(calendarDifference / 7)
+	const weeks = Math.trunc(calendarDifference / 7);
 
-  let result = weeks * 5
-  dateRight = addDays(dateRight, weeks * 7)
+	let result = weeks * 5;
+	dateRight = addDays(dateRight, weeks * 7);
 
-  // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
-  while (!isSameDay(dateLeft, dateRight)) {
-    // sign is used to account for both negative and positive differences
-    result += isWeekend(dateRight) ? 0 : sign
-    dateRight = addDays(dateRight, sign)
-  }
+	// the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
+	while (!isSameDay(dateLeft, dateRight)) {
+		// sign is used to account for both negative and positive differences
+		result += isWeekend(dateRight) ? 0 : sign;
+		dateRight = addDays(dateRight, sign);
+	}
 
-  return result === 0 ? 0 : result
+	return result === 0 ? 0 : result;
 }

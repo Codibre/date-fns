@@ -1,4 +1,4 @@
-import isSameMonth from '../isSameMonth/index'
+import isSameMonth from '../isSameMonth/index';
 
 /**
  * @name isThisMonth
@@ -21,8 +21,6 @@ import isSameMonth from '../isSameMonth/index'
  * //=> true
  */
 
-export default function isThisMonth<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameMonth(Date.now(), dirtyDate)
+export default function isThisMonth(dirtyDate: Date | number): boolean {
+	return isSameMonth(Date.now(), dirtyDate);
 }

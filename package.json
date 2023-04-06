@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT; ALSO, USE YARN FOR DEVELOPMENT",
+  "version": "0.0.0",
   "sideEffects": false,
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
@@ -20,11 +20,17 @@
   "main": "index.js",
   "module": "esm/index.js",
   "scripts": {
-    "test": "karma start config/karma.js",
-    "lint": "eslint .",
-    "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
-    "locale-snapshots": "env TZ=utc babel-node --extensions .ts,.js ./scripts/build/localeSnapshots/index.js",
-    "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
+    "build": "nest build",
+    "test": "TZ=UTC jest test/unit --runInBand --forceExit",
+    "test:only": "TZ=UTC jest",
+    "test:watch": "TZ=UTC jest test/unit --runInBand --forceExit --watch",
+    "test:coverage": "TZ=UTC jest test/unit --runInBand --forceExit --coverage",
+		"lint": "npm run lint:format && npm run lint:style",
+		"lint:fix": "npm run lint:format:fix && npm run lint:style:fix",
+		"lint:format": "prettier --check \"{src,test}/**/*.ts\"",
+		"lint:format:fix": "prettier --write \"{src,test}/**/*.ts\"",
+		"lint:style": "eslint \"src/**\" \"test/**\"",
+		"lint:style:fix": "eslint \"src/**\" \"test/**\" --fix"
   },
   "husky": {
     "hooks": {
@@ -42,7 +48,6 @@
     "> 1%",
     "IE 11"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
@@ -50,8 +55,9 @@
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-env": "^7.18.10",
     "@babel/preset-typescript": "^7.18.6",
-    "@date-fns/date-fns-scripts": "0.0.6",
+    "@nestjs/cli": "^9.3.0",
     "@octokit/core": "^3.2.5",
+    "@types/eslint": "^8.37.0",
     "@types/jest": "^26.0.23",
     "@types/node": "^14.6.3",
     "@types/sinon": "^9.0.6",
@@ -65,13 +71,13 @@
     "coveralls": "^3.0.6",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "firebase": "^3.7.1",
-    "glob-promise": "^2.0.0",
     "globby": "^11.0.3",
     "gzip-size-cli": "^1.0.0",
     "husky": "^1.0.1",
     "istanbul-instrumenter-loader": "^3.0.1",
-    "jest": "^27.0.4",
+    "jest": "^29.5.0",
     "js-beautify": "^1.5.10",
     "js-fns": "^2.5.1",
     "jsdoc-babel": "^0.5.0",
@@ -85,7 +91,6 @@
     "karma-mocha-reporter": "^2.2.5",
     "karma-sauce-launcher": "^1.2.0",
     "karma-sourcemap-loader": "^0.3.5",
-    "karma-webpack": "^4.0.2",
     "lint-staged": "^7.3.0",
     "lodash": "^4.17.15",
     "lodash.clonedeep": "^4.5.0",
@@ -99,13 +104,11 @@
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
     "snazzy": "^7.0.0",
+    "ts-jest": "^29.1.0",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4",
     "webpack": "4",
     "webpack-cli": "^3.1.2",
     "world-countries": "^1.8.1"
-  },
-  "resolutions": {
-    "ajv": "6.8.1"
   }
 }

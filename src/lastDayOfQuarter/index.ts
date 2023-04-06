@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name lastDayOfQuarter
@@ -17,13 +17,11 @@ import toDate from '../toDate/index'
  * const result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function lastDayOfQuarter<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  const currentMonth = date.getMonth()
-  const month = currentMonth - (currentMonth % 3) + 3
-  date.setMonth(month, 0)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function lastDayOfQuarter(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	const currentMonth = date.getMonth();
+	const month = currentMonth - (currentMonth % 3) + 3;
+	date.setMonth(month, 0);
+	date.setHours(0, 0, 0, 0);
+	return date;
 }

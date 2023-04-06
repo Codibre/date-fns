@@ -1,4 +1,6 @@
-import distanceInWords, { FormatDistanceOptions } from '../formatDistance/index'
+import distanceInWords, {
+	FormatDistanceOptions,
+} from '../formatDistance/index';
 
 /**
  * The {@link formatDistanceToNow} function options.
@@ -87,9 +89,9 @@ export interface FormatDistanceToNowOptions extends FormatDistanceOptions {}
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: FormatDistanceToNowOptions
+export default function formatDistanceToNow(
+	dirtyDate: Date | number,
+	options?: FormatDistanceToNowOptions,
 ): string {
-  return distanceInWords(dirtyDate, Date.now(), options)
+	return distanceInWords(dirtyDate, Date.now(), options);
 }

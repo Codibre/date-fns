@@ -1,14 +1,14 @@
-import { millisecondsInWeek } from '../constants/index'
-import startOfWeek from '../startOfWeek/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import { millisecondsInWeek } from '../constants/index';
+import startOfWeek from '../startOfWeek/index';
+import type { LocaleOptions, WeekStartOptions } from '../types';
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index';
 
 /**
  * The {@link differenceInCalendarWeeks} function options.
  */
 export interface DifferenceInCalendarWeeksOptions
-  extends LocaleOptions,
-    WeekStartOptions {}
+	extends LocaleOptions,
+		WeekStartOptions {}
 
 /**
  * @name differenceInCalendarWeeks
@@ -41,22 +41,23 @@ export interface DifferenceInCalendarWeeksOptions
  * )
  * //=> 2
  */
-export default function differenceInCalendarWeeks<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number,
-  options?: DifferenceInCalendarWeeksOptions
+export default function differenceInCalendarWeeks(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
+	options?: DifferenceInCalendarWeeksOptions,
 ): number {
-  const startOfWeekLeft = startOfWeek(dirtyDateLeft, options)
-  const startOfWeekRight = startOfWeek(dirtyDateRight, options)
+	const startOfWeekLeft = startOfWeek(dirtyDateLeft, options);
+	const startOfWeekRight = startOfWeek(dirtyDateRight, options);
 
-  const timestampLeft =
-    startOfWeekLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfWeekLeft)
-  const timestampRight =
-    startOfWeekRight.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfWeekRight)
+	const timestampLeft =
+		startOfWeekLeft.getTime() -
+		getTimezoneOffsetInMilliseconds(startOfWeekLeft);
+	const timestampRight =
+		startOfWeekRight.getTime() -
+		getTimezoneOffsetInMilliseconds(startOfWeekRight);
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a week is not constant
-  // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / millisecondsInWeek)
+	// Round the number of days to the nearest integer
+	// because the number of milliseconds in a week is not constant
+	// (e.g. it's different in the week of the daylight saving time clock shift)
+	return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
 }

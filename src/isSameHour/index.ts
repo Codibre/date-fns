@@ -1,4 +1,4 @@
-import startOfHour from '../startOfHour/index'
+import startOfHour from '../startOfHour/index';
 
 /**
  * @name isSameHour
@@ -22,12 +22,12 @@ import startOfHour from '../startOfHour/index'
  * const result = isSameHour(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 5, 6, 0))
  * //=> false
  */
-export default function isSameHour<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function isSameHour(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): boolean {
-  const dateLeftStartOfHour = startOfHour(dirtyDateLeft)
-  const dateRightStartOfHour = startOfHour(dirtyDateRight)
+	const dateLeftStartOfHour = startOfHour(dirtyDateLeft);
+	const dateRightStartOfHour = startOfHour(dirtyDateRight);
 
-  return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
+	return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime();
 }

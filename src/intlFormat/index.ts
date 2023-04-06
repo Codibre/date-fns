@@ -1,26 +1,24 @@
-type Locale = Intl.ResolvedDateTimeFormatOptions['locale']
-type FormatOptions = Intl.DateTimeFormatOptions
-type LocaleOptions = { locale: Locale | Locale[] }
+type Locale = Intl.ResolvedDateTimeFormatOptions['locale'];
+type FormatOptions = Intl.DateTimeFormatOptions;
+type LocaleOptions = { locale: Locale | Locale[] };
 
-export default function intlFormat<DateType extends Date>(
-  date: DateType
-): string
+export default function intlFormat(date: Date): string;
 
-export default function intlFormat<DateType extends Date>(
-  date: DateType,
-  localeOptions: LocaleOptions
-): string
+export default function intlFormat(
+	date: Date,
+	localeOptions: LocaleOptions,
+): string;
 
-export default function intlFormat<DateType extends Date>(
-  date: DateType,
-  formatOptions: FormatOptions
-): string
+export default function intlFormat(
+	date: Date,
+	formatOptions: FormatOptions,
+): string;
 
-export default function intlFormat<DateType extends Date>(
-  date: DateType,
-  formatOptions: FormatOptions,
-  localeOptions: LocaleOptions
-): string
+export default function intlFormat(
+	date: Date,
+	formatOptions: FormatOptions,
+	localeOptions: LocaleOptions,
+): string;
 
 /**
  * @name intlFormat
@@ -91,26 +89,26 @@ export default function intlFormat<DateType extends Date>(
  * const result = intlFormat(new Date(2019, 9, 4, 12, 30, 13, 456))
  * //=> 10/4/2019
  */
-export default function intlFormat<DateType extends Date>(
-  date: DateType,
-  formatOrLocale?: FormatOptions | LocaleOptions,
-  localeOptions?: LocaleOptions
+export default function intlFormat(
+	date: Date,
+	formatOrLocale?: FormatOptions | LocaleOptions,
+	localeOptions?: LocaleOptions,
 ): string {
-  let formatOptions: FormatOptions | undefined
+	let formatOptions: FormatOptions | undefined;
 
-  if (isFormatOptions(formatOrLocale)) {
-    formatOptions = formatOrLocale
-  } else {
-    localeOptions = formatOrLocale
-  }
+	if (isFormatOptions(formatOrLocale)) {
+		formatOptions = formatOrLocale;
+	} else {
+		localeOptions = formatOrLocale;
+	}
 
-  return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
-    date
-  )
+	return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
+		date,
+	);
 }
 
 function isFormatOptions(
-  opts: LocaleOptions | FormatOptions | undefined
+	opts: LocaleOptions | FormatOptions | undefined,
 ): opts is FormatOptions {
-  return opts !== undefined && !('locale' in opts)
+	return opts !== undefined && !('locale' in opts);
 }

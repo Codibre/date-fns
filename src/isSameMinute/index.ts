@@ -1,4 +1,4 @@
-import startOfMinute from '../startOfMinute/index'
+import startOfMinute from '../startOfMinute/index';
 
 /**
  * @name isSameMinute
@@ -28,12 +28,12 @@ import startOfMinute from '../startOfMinute/index'
  * )
  * //=> false
  */
-export default function isSameMinute<DateType extends Date>(
-  dirtyDateLeft: DateType | number,
-  dirtyDateRight: DateType | number
+export default function isSameMinute(
+	dirtyDateLeft: Date | number,
+	dirtyDateRight: Date | number,
 ): boolean {
-  const dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
-  const dateRightStartOfMinute = startOfMinute(dirtyDateRight)
+	const dateLeftStartOfMinute = startOfMinute(dirtyDateLeft);
+	const dateRightStartOfMinute = startOfMinute(dirtyDateRight);
 
-  return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
+	return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime();
 }

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name getISODay
@@ -19,15 +19,13 @@ import toDate from '../toDate/index'
  * const result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export default function getISODay<DateType extends Date>(
-  dirtyDate: DateType | number
-): number {
-  const date = toDate(dirtyDate)
-  let day = date.getDay()
+export default function getISODay(dirtyDate: Date | number): number {
+	const date = toDate(dirtyDate);
+	let day = date.getDay();
 
-  if (day === 0) {
-    day = 7
-  }
+	if (day === 0) {
+		day = 7;
+	}
 
-  return day
+	return day;
 }

@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name startOfDecade
@@ -16,13 +16,11 @@ import toDate from '../toDate/index'
  * const result = startOfDecade(new Date(2015, 9, 21, 00, 00, 00))
  * //=> Jan 01 2010 00:00:00
  */
-export default function startOfDecade<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  const decade = Math.floor(year / 10) * 10
-  date.setFullYear(decade, 0, 1)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function startOfDecade(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	const year = date.getFullYear();
+	const decade = Math.floor(year / 10) * 10;
+	date.setFullYear(decade, 0, 1);
+	date.setHours(0, 0, 0, 0);
+	return date;
 }

@@ -1,7 +1,7 @@
-import constructFrom from '../constructFrom/index'
-import setMonth from '../setMonth/index'
-import toDate from '../toDate/index'
-import type { DateValues } from '../types'
+import constructFrom from '../constructFrom/index';
+import setMonth from '../setMonth/index';
+import toDate from '../toDate/index';
+import type { DateValues } from '../types';
 
 /**
  * @name set
@@ -40,44 +40,44 @@ import type { DateValues } from '../types'
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set<DateType extends Date>(
-  dirtyDate: DateType | number,
-  values: DateValues
-): DateType {
-  let date = toDate(dirtyDate)
+export default function set(
+	dirtyDate: Date | number,
+	values: DateValues,
+): Date {
+	let date = toDate(dirtyDate);
 
-  // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date.getTime())) {
-    return constructFrom(dirtyDate, NaN)
-  }
+	// Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
+	if (isNaN(date.getTime())) {
+		return constructFrom(dirtyDate, NaN);
+	}
 
-  if (values.year != null) {
-    date.setFullYear(values.year)
-  }
+	if (values.year != null) {
+		date.setFullYear(values.year);
+	}
 
-  if (values.month != null) {
-    date = setMonth(date, values.month)
-  }
+	if (values.month != null) {
+		date = setMonth(date, values.month);
+	}
 
-  if (values.date != null) {
-    date.setDate(values.date)
-  }
+	if (values.date != null) {
+		date.setDate(values.date);
+	}
 
-  if (values.hours != null) {
-    date.setHours(values.hours)
-  }
+	if (values.hours != null) {
+		date.setHours(values.hours);
+	}
 
-  if (values.minutes != null) {
-    date.setMinutes(values.minutes)
-  }
+	if (values.minutes != null) {
+		date.setMinutes(values.minutes);
+	}
 
-  if (values.seconds != null) {
-    date.setSeconds(values.seconds)
-  }
+	if (values.seconds != null) {
+		date.setSeconds(values.seconds);
+	}
 
-  if (values.milliseconds != null) {
-    date.setMilliseconds(values.milliseconds)
-  }
+	if (values.milliseconds != null) {
+		date.setMilliseconds(values.milliseconds);
+	}
 
-  return date
+	return date;
 }

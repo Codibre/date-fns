@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name lastDayOfYear
@@ -17,12 +17,10 @@ import toDate from '../toDate/index'
  * const result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 00:00:00
  */
-export default function lastDayOfYear<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  date.setFullYear(year + 1, 0, 0)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function lastDayOfYear(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	const year = date.getFullYear();
+	date.setFullYear(year + 1, 0, 0);
+	date.setHours(0, 0, 0, 0);
+	return date;
 }

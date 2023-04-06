@@ -1,4 +1,4 @@
-import { quartersInYear } from '../constants/index'
+import { quartersInYear } from '../constants/index';
 
 /**
  * @name quartersToYears
@@ -23,6 +23,6 @@ import { quartersInYear } from '../constants/index'
  * //=> 2
  */
 export default function quartersToYears(quarters: number): number {
-  const years = quarters / quartersInYear
-  return Math.floor(years)
+	const years = quarters / quartersInYear;
+	return Math.floor(years);
 }

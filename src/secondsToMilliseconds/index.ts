@@ -1,4 +1,4 @@
-import { millisecondsInSecond } from '../constants/index'
+import { millisecondsInSecond } from '../constants/index';
 
 /**
  * @name secondsToMilliseconds
@@ -18,5 +18,5 @@ import { millisecondsInSecond } from '../constants/index'
  * //=> 2000
  */
 export default function secondsToMilliseconds(seconds: number): number {
-  return seconds * millisecondsInSecond
+	return seconds * millisecondsInSecond;
 }

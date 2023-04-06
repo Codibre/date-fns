@@ -1,4 +1,4 @@
-import isSameMinute from '../isSameMinute/index'
+import isSameMinute from '../isSameMinute/index';
 
 /**
  * @name isThisMinute
@@ -22,8 +22,6 @@ import isSameMinute from '../isSameMinute/index'
  * //=> true
  */
 
-export default function isThisMinute<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  return isSameMinute(Date.now(), dirtyDate)
+export default function isThisMinute(dirtyDate: Date | number): boolean {
+	return isSameMinute(Date.now(), dirtyDate);
 }

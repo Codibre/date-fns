@@ -1,6 +1,6 @@
-import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
-import endOfMonth from '../endOfMonth/index'
-import startOfMonth from '../startOfMonth/index'
+import eachWeekendOfInterval from '../eachWeekendOfInterval/index';
+import endOfMonth from '../endOfMonth/index';
+import startOfMonth from '../startOfMonth/index';
 
 /**
  * @name eachWeekendOfMonth
@@ -28,13 +28,11 @@ import startOfMonth from '../startOfMonth/index'
  * //   Sun Feb 27 2022 00:00:00
  * // ]
  */
-export default function eachWeekendOfMonth<DateType extends Date>(
-  dirtyDate: DateType
-): DateType[] {
-  const startDate = startOfMonth(dirtyDate)
-  if (isNaN(startDate.getTime()))
-    throw new RangeError('The passed date is invalid')
+export default function eachWeekendOfMonth(dirtyDate: Date): Date[] {
+	const startDate = startOfMonth(dirtyDate);
+	if (isNaN(startDate.getTime()))
+		{throw new RangeError('The passed date is invalid');}
 
-  const endDate = endOfMonth(dirtyDate)
-  return eachWeekendOfInterval({ start: startDate, end: endDate })
+	const endDate = endOfMonth(dirtyDate);
+	return eachWeekendOfInterval({ start: startDate, end: endDate });
 }

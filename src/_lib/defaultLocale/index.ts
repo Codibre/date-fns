@@ -1,2 +1,2 @@
-import defaultLocale from '../../locale/en-US/index'
-export default defaultLocale
+import defaultLocale from '../../locale/en-US/index';
+export default defaultLocale;

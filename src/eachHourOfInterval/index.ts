@@ -1,6 +1,6 @@
-import addHours from '../addHours/index'
-import toDate from '../toDate/index'
-import type { Interval, StepOptions } from '../types'
+import addHours from '../addHours/index';
+import toDate from '../toDate/index';
+import type { Interval, StepOptions } from '../types';
 
 /**
  * The {@link eachHourOfInterval} function options.
@@ -35,34 +35,34 @@ export interface EachHourOfIntervalOptions extends StepOptions {}
  * //   Mon Oct 06 2014 15:00:00
  * // ]
  */
-export default function eachHourOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
-  options?: EachHourOfIntervalOptions
-): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export default function eachHourOfInterval(
+	interval: Interval,
+	options?: EachHourOfIntervalOptions,
+): Date[] {
+	const startDate = toDate(interval.start);
+	const endDate = toDate(interval.end);
 
-  const startTime = startDate.getTime()
-  const endTime = endDate.getTime()
+	const startTime = startDate.getTime();
+	const endTime = endDate.getTime();
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startTime <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
+	// Throw an exception if start date is after end date or if any date is `Invalid Date`
+	if (!(startTime <= endTime)) {
+		throw new RangeError('Invalid interval');
+	}
 
-  const dates = []
+	const dates = [];
 
-  let currentDate = startDate
-  currentDate.setMinutes(0, 0, 0)
+	let currentDate = startDate;
+	currentDate.setMinutes(0, 0, 0);
 
-  const step = options?.step ?? 1
-  if (step < 1 || isNaN(step))
-    throw new RangeError('`options.step` must be a number greater than 1')
+	const step = options?.step ?? 1;
+	if (step < 1 || isNaN(step))
+		{throw new RangeError('`options.step` must be a number greater than 1');}
 
-  while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate))
-    currentDate = addHours(currentDate, step)
-  }
+	while (currentDate.getTime() <= endTime) {
+		dates.push(toDate(currentDate));
+		currentDate = addHours(currentDate, step);
+	}
 
-  return dates
+	return dates;
 }

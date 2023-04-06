@@ -1,13 +1,13 @@
-import toDate from '../toDate/index'
-import type { FormatOptions, RepresentationOptions } from '../types'
-import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import toDate from '../toDate/index';
+import type { FormatOptions, RepresentationOptions } from '../types';
+import addLeadingZeros from '../_lib/addLeadingZeros/index';
 
 /**
  * The {@link formatISO} function options.
  */
 export interface FormatISOOptions
-  extends FormatOptions,
-    RepresentationOptions {}
+	extends FormatOptions,
+		RepresentationOptions {}
 
 /**
  * @name formatISO
@@ -42,65 +42,65 @@ export interface FormatISOOptions
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
  */
-export default function formatISO<DateType extends Date>(
-  date: DateType | number,
-  options?: FormatISOOptions
+export default function formatISO(
+	date: Date | number,
+	options?: FormatISOOptions,
 ): string {
-  const originalDate = toDate(date)
+	const originalDate = toDate(date);
 
-  if (isNaN(originalDate.getTime())) {
-    throw new RangeError('Invalid time value')
-  }
+	if (isNaN(originalDate.getTime())) {
+		throw new RangeError('Invalid time value');
+	}
 
-  const format = options?.format ?? 'extended'
-  const representation = options?.representation ?? 'complete'
+	const format = options?.format ?? 'extended';
+	const representation = options?.representation ?? 'complete';
 
-  let result = ''
-  let tzOffset = ''
+	let result = '';
+	let tzOffset = '';
 
-  const dateDelimiter = format === 'extended' ? '-' : ''
-  const timeDelimiter = format === 'extended' ? ':' : ''
+	const dateDelimiter = format === 'extended' ? '-' : '';
+	const timeDelimiter = format === 'extended' ? ':' : '';
 
-  // Representation is either 'date' or 'complete'
-  if (representation !== 'time') {
-    const day = addLeadingZeros(originalDate.getDate(), 2)
-    const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
-    const year = addLeadingZeros(originalDate.getFullYear(), 4)
+	// Representation is either 'date' or 'complete'
+	if (representation !== 'time') {
+		const day = addLeadingZeros(originalDate.getDate(), 2);
+		const month = addLeadingZeros(originalDate.getMonth() + 1, 2);
+		const year = addLeadingZeros(originalDate.getFullYear(), 4);
 
-    // yyyyMMdd or yyyy-MM-dd.
-    result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`
-  }
+		// yyyyMMdd or yyyy-MM-dd.
+		result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`;
+	}
 
-  // Representation is either 'time' or 'complete'
-  if (representation !== 'date') {
-    // Add the timezone.
-    const offset = originalDate.getTimezoneOffset()
+	// Representation is either 'time' or 'complete'
+	if (representation !== 'date') {
+		// Add the timezone.
+		const offset = originalDate.getTimezoneOffset();
 
-    if (offset !== 0) {
-      const absoluteOffset = Math.abs(offset)
-      const hourOffset = addLeadingZeros(Math.floor(absoluteOffset / 60), 2)
-      const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
-      // If less than 0, the sign is +, because it is ahead of time.
-      const sign = offset < 0 ? '+' : '-'
+		if (offset !== 0) {
+			const absoluteOffset = Math.abs(offset);
+			const hourOffset = addLeadingZeros(Math.floor(absoluteOffset / 60), 2);
+			const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2);
+			// If less than 0, the sign is +, because it is ahead of time.
+			const sign = offset < 0 ? '+' : '-';
 
-      tzOffset = `${sign}${hourOffset}:${minuteOffset}`
-    } else {
-      tzOffset = 'Z'
-    }
+			tzOffset = `${sign}${hourOffset}:${minuteOffset}`;
+		} else {
+			tzOffset = 'Z';
+		}
 
-    const hour = addLeadingZeros(originalDate.getHours(), 2)
-    const minute = addLeadingZeros(originalDate.getMinutes(), 2)
-    const second = addLeadingZeros(originalDate.getSeconds(), 2)
+		const hour = addLeadingZeros(originalDate.getHours(), 2);
+		const minute = addLeadingZeros(originalDate.getMinutes(), 2);
+		const second = addLeadingZeros(originalDate.getSeconds(), 2);
 
-    // If there's also date, separate it with time with 'T'
-    const separator = result === '' ? '' : 'T'
+		// If there's also date, separate it with time with 'T'
+		const separator = result === '' ? '' : 'T';
 
-    // Creates a time string consisting of hour, minute, and second, separated by delimiters, if defined.
-    const time = [hour, minute, second].join(timeDelimiter)
+		// Creates a time string consisting of hour, minute, and second, separated by delimiters, if defined.
+		const time = [hour, minute, second].join(timeDelimiter);
 
-    // HHmmss or HH:mm:ss.
-    result = `${result}${separator}${time}${tzOffset}`
-  }
+		// HHmmss or HH:mm:ss.
+		result = `${result}${separator}${time}${tzOffset}`;
+	}
 
-  return result
+	return result;
 }

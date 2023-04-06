@@ -1,14 +1,14 @@
-import addWeeks from '../addWeeks/index'
-import startOfWeek from '../startOfWeek/index'
-import toDate from '../toDate/index'
-import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
+import addWeeks from '../addWeeks/index';
+import startOfWeek from '../startOfWeek/index';
+import toDate from '../toDate/index';
+import type { Interval, LocaleOptions, WeekStartOptions } from '../types';
 
 /**
  * The {@link eachWeekOfInterval} function options.
  */
 export interface EachWeekOfIntervalOptions
-  extends WeekStartOptions,
-    LocaleOptions {}
+	extends WeekStartOptions,
+		LocaleOptions {}
 
 /**
  * @name eachWeekOfInterval
@@ -41,39 +41,39 @@ export interface EachWeekOfIntervalOptions
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval<DateType extends Date>(
-  interval: Interval<DateType>,
-  options?: EachWeekOfIntervalOptions
-): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export default function eachWeekOfInterval(
+	interval: Interval,
+	options?: EachWeekOfIntervalOptions,
+): Date[] {
+	const startDate = toDate(interval.start);
+	const endDate = toDate(interval.end);
 
-  let endTime = endDate.getTime()
+	let endTime = endDate.getTime();
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
+	// Throw an exception if start date is after end date or if any date is `Invalid Date`
+	if (!(startDate.getTime() <= endTime)) {
+		throw new RangeError('Invalid interval');
+	}
 
-  const startDateWeek = startOfWeek(startDate, options)
-  const endDateWeek = startOfWeek(endDate, options)
+	const startDateWeek = startOfWeek(startDate, options);
+	const endDateWeek = startOfWeek(endDate, options);
 
-  // Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
-  startDateWeek.setHours(15)
-  endDateWeek.setHours(15)
+	// Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
+	startDateWeek.setHours(15);
+	endDateWeek.setHours(15);
 
-  endTime = endDateWeek.getTime()
+	endTime = endDateWeek.getTime();
 
-  const weeks = []
+	const weeks = [];
 
-  let currentWeek = startDateWeek
+	let currentWeek = startDateWeek;
 
-  while (currentWeek.getTime() <= endTime) {
-    currentWeek.setHours(0)
-    weeks.push(toDate(currentWeek))
-    currentWeek = addWeeks(currentWeek, 1)
-    currentWeek.setHours(15)
-  }
+	while (currentWeek.getTime() <= endTime) {
+		currentWeek.setHours(0);
+		weeks.push(toDate(currentWeek));
+		currentWeek = addWeeks(currentWeek, 1);
+		currentWeek.setHours(15);
+	}
 
-  return weeks
+	return weeks;
 }

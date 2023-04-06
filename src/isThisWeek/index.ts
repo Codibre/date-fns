@@ -1,5 +1,5 @@
-import isSameWeek from '../isSameWeek/index'
-import type { LocaleOptions, WeekStartOptions } from '../types'
+import isSameWeek from '../isSameWeek/index';
+import type { LocaleOptions, WeekStartOptions } from '../types';
 
 /**
  * The {@link isThisWeek} function options.
@@ -34,9 +34,9 @@ export interface IsThisWeekOptions extends WeekStartOptions, LocaleOptions {}
  * //=> false
  */
 
-export default function is<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: IsThisWeekOptions
+export default function is(
+	dirtyDate: Date | number,
+	options?: IsThisWeekOptions,
 ): boolean {
-  return isSameWeek(dirtyDate, Date.now(), options)
+	return isSameWeek(dirtyDate, Date.now(), options);
 }

@@ -1,12 +1,12 @@
 import formatDistanceStrict, {
-  FormatDistanceStrictOptions,
-} from '../formatDistanceStrict/index'
+	FormatDistanceStrictOptions,
+} from '../formatDistanceStrict/index';
 
 /**
  * The {@link formatDistanceToNowStrict} function options.
  */
 export interface FormatDistanceToNowStrictOptions
-  extends FormatDistanceStrictOptions {}
+	extends FormatDistanceStrictOptions {}
 
 /**
  * @name formatDistanceToNowStrict
@@ -77,9 +77,9 @@ export interface FormatDistanceToNowStrictOptions
  * )
  * //=> '1 jaro'
  */
-export default function formatDistanceToNowStrict<DateType extends Date>(
-  dirtyDate: DateType | number,
-  options?: FormatDistanceToNowStrictOptions
+export default function formatDistanceToNowStrict(
+	dirtyDate: Date | number,
+	options?: FormatDistanceToNowStrictOptions,
 ): string {
-  return formatDistanceStrict(dirtyDate, Date.now(), options)
+	return formatDistanceStrict(dirtyDate, Date.now(), options);
 }

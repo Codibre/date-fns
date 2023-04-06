@@ -1,7 +1,7 @@
-import addQuarters from '../addQuarters/index'
-import startOfQuarter from '../startOfQuarter/index'
-import toDate from '../toDate/index'
-import type { Interval } from '../types'
+import addQuarters from '../addQuarters/index';
+import startOfQuarter from '../startOfQuarter/index';
+import toDate from '../toDate/index';
+import type { Interval } from '../types';
 
 /**
  * @name eachQuarterOfInterval
@@ -28,32 +28,30 @@ import type { Interval } from '../types'
  * //   Tue Jul 01 2014 00:00:00,
  * // ]
  */
-export default function eachQuarterOfInterval<DateType extends Date>(
-  interval: Interval<DateType>
-): DateType[] {
-  const startDate = toDate(interval.start)
-  const endDate = toDate(interval.end)
+export default function eachQuarterOfInterval(interval: Interval): Date[] {
+	const startDate = toDate(interval.start);
+	const endDate = toDate(interval.end);
 
-  let endTime = endDate.getTime()
+	let endTime = endDate.getTime();
 
-  // Throw an exception if start date is after end date or if any date is `Invalid Date`
-  if (!(startDate.getTime() <= endTime)) {
-    throw new RangeError('Invalid interval')
-  }
+	// Throw an exception if start date is after end date or if any date is `Invalid Date`
+	if (!(startDate.getTime() <= endTime)) {
+		throw new RangeError('Invalid interval');
+	}
 
-  const startDateQuarter = startOfQuarter(startDate)
-  const endDateQuarter = startOfQuarter(endDate)
+	const startDateQuarter = startOfQuarter(startDate);
+	const endDateQuarter = startOfQuarter(endDate);
 
-  endTime = endDateQuarter.getTime()
+	endTime = endDateQuarter.getTime();
 
-  const quarters = []
+	const quarters = [];
 
-  let currentQuarter = startDateQuarter
+	let currentQuarter = startDateQuarter;
 
-  while (currentQuarter.getTime() <= endTime) {
-    quarters.push(toDate(currentQuarter))
-    currentQuarter = addQuarters(currentQuarter, 1)
-  }
+	while (currentQuarter.getTime() <= endTime) {
+		quarters.push(toDate(currentQuarter));
+		currentQuarter = addQuarters(currentQuarter, 1);
+	}
 
-  return quarters
+	return quarters;
 }

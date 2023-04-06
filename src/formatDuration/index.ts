@@ -1,26 +1,26 @@
-import type { FormatDistanceToken } from '../locale/types'
-import type { Duration, DurationUnit, LocaleOptions } from '../types'
-import defaultLocale from '../_lib/defaultLocale/index'
-import { getDefaultOptions } from '../_lib/defaultOptions/index'
+import type { FormatDistanceToken } from '../locale/types';
+import type { Duration, DurationUnit, LocaleOptions } from '../types';
+import defaultLocale from '../_lib/defaultLocale/index';
+import { getDefaultOptions } from '../_lib/defaultOptions/index';
 
 /**
  * The {@link formatDuration} function options.
  */
 export interface FormatDurationOptions extends LocaleOptions {
-  format?: DurationUnit[]
-  zero?: boolean
-  delimiter?: string
+	format?: DurationUnit[];
+	zero?: boolean;
+	delimiter?: string;
 }
 
 const defaultFormat: DurationUnit[] = [
-  'years',
-  'months',
-  'weeks',
-  'days',
-  'hours',
-  'minutes',
-  'seconds',
-]
+	'years',
+	'months',
+	'weeks',
+	'days',
+	'hours',
+	'minutes',
+	'seconds',
+];
 
 /**
  * @name formatDuration
@@ -80,31 +80,31 @@ const defaultFormat: DurationUnit[] = [
  * //=> '2 years, 9 months, 3 weeks'
  */
 export default function formatDuration(
-  duration: Duration,
-  options?: FormatDurationOptions
+	duration: Duration,
+	options?: FormatDurationOptions,
 ): string {
-  const defaultOptions = getDefaultOptions()
-  const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale
-  const format = options?.format ?? defaultFormat
-  const zero = options?.zero ?? false
-  const delimiter = options?.delimiter ?? ' '
+	const defaultOptions = getDefaultOptions();
+	const locale = options?.locale ?? defaultOptions.locale ?? defaultLocale;
+	const format = options?.format ?? defaultFormat;
+	const zero = options?.zero ?? false;
+	const delimiter = options?.delimiter ?? ' ';
 
-  if (!locale.formatDistance) {
-    return ''
-  }
+	if (!locale.formatDistance) {
+		return '';
+	}
 
-  const result = format
-    .reduce((acc, unit) => {
-      const token = `x${unit.replace(/(^.)/, (m) =>
-        m.toUpperCase()
-      )}` as FormatDistanceToken
-      const value = duration[unit]
-      if (value !== undefined && (zero || duration[unit])) {
-        return acc.concat(locale.formatDistance(token, value))
-      }
-      return acc
-    }, [] as string[])
-    .join(delimiter)
+	const result = format
+		.reduce((acc, unit) => {
+			const token = `x${unit.replace(/(^.)/, (m) =>
+				m.toUpperCase(),
+			)}` as FormatDistanceToken;
+			const value = duration[unit];
+			if (value !== undefined && (zero || duration[unit])) {
+				return acc.concat(locale.formatDistance(token, value));
+			}
+			return acc;
+		}, [] as string[])
+		.join(delimiter);
 
-  return result
+	return result;
 }

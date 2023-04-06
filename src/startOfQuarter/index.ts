@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name startOfQuarter
@@ -17,13 +17,11 @@ import toDate from '../toDate/index'
  * const result = startOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Jul 01 2014 00:00:00
  */
-export default function startOfQuarter<DateType extends Date>(
-  dirtyDate: DateType | number
-): DateType {
-  const date = toDate(dirtyDate)
-  const currentMonth = date.getMonth()
-  const month = currentMonth - (currentMonth % 3)
-  date.setMonth(month, 1)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function startOfQuarter(dirtyDate: Date | number): Date {
+	const date = toDate(dirtyDate);
+	const currentMonth = date.getMonth();
+	const month = currentMonth - (currentMonth % 3);
+	date.setMonth(month, 1);
+	date.setHours(0, 0, 0, 0);
+	return date;
 }

@@ -1,8 +1,8 @@
-import assign from '../_lib/assign/index'
+import assign from '../_lib/assign/index';
 import {
-  DefaultOptions,
-  getDefaultOptions as getInternalDefaultOptions,
-} from '../_lib/defaultOptions/index'
+	DefaultOptions,
+	getDefaultOptions as getInternalDefaultOptions,
+} from '../_lib/defaultOptions/index';
 
 /**
  * @name getDefaultOptions
@@ -29,5 +29,5 @@ import {
  * //=> { weekStarsOn: 1, firstWeekContainsDate: 4 }
  */
 export default function getDefaultOptions(): DefaultOptions {
-  return assign({}, getInternalDefaultOptions())
+	return assign({}, getInternalDefaultOptions());
 }

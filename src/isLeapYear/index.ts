@@ -1,4 +1,4 @@
-import toDate from '../toDate/index'
+import toDate from '../toDate/index';
 
 /**
  * @name isLeapYear
@@ -16,10 +16,8 @@ import toDate from '../toDate/index'
  * const result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export default function isLeapYear<DateType extends Date>(
-  dirtyDate: DateType | number
-): boolean {
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
-  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
+export default function isLeapYear(dirtyDate: Date | number): boolean {
+	const date = toDate(dirtyDate);
+	const year = date.getFullYear();
+	return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
 }

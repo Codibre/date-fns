@@ -1,4 +1,4 @@
-import type { GenericDateConstructor } from '../types'
+import type { GenericDateConstructor } from '../types';
 
 /**
  * @name constructFrom
@@ -18,20 +18,20 @@ import type { GenericDateConstructor } from '../types'
  * import { constructFrom } from 'date-fns'
  *
  * // A function that clones a date preserving the original type
- * function cloneDate<DateType extends Date(date: DateType): DateType {
+ * function cloneDate<Date extends Date(date: Date): Date {
  *   return constructFrom(
  *     date, // Use contrustor from the given date
  *     date.getTime() // Use the date value to create a new date
  *   )
  * }
  */
-export default function constructFrom<DateType extends Date>(
-  date: DateType | number,
-  value: Date | number
-): DateType {
-  if (date instanceof Date) {
-    return new (date.constructor as GenericDateConstructor<DateType>)(value)
-  } else {
-    return new Date(value) as DateType
-  }
+export default function constructFrom(
+	date: Date | number,
+	value: Date | number,
+): Date {
+	if (date instanceof Date) {
+		return new (date.constructor as GenericDateConstructor<Date>)(value);
+	} else {
+		return new Date(value);
+	}
 }
